@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>NighfFall Blog</title>
-  
+  <icon>https://wsjslient.github.io/icon.png</icon>
   <subtitle>NightFall写字的地方</subtitle>
   <link href="https://wsjslient.github.io/atom.xml" rel="self"/>
   
@@ -22,8 +22,6 @@
     <id>https://wsjslient.github.io/2021/06/21/My-First-Blog/</id>
     <published>2021-06-21T03:37:42.000Z</published>
     <updated>2021-06-21T03:44:50.822Z</updated>
-    
-    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;有一个属于自己的地方是一件美好的事情，我会尽我最大的努力来完善这里、充实这里，这是我第一篇的博客。我的博客主要记录学习方面的东西，如果有可能也会记录一些生活的点滴，希望能带给你一些帮助和收获！</p><span id="more"></span>]]></content>
     
     
     <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;有一个属于自己的地方是一件美好的事情，我会尽我最大的努力来完善这里、充实这里，这是我第一篇的博客。我的博客主要记录学习方面的东西，如果有可能也会记录一些生活的点滴，希望能带给你一些帮助和收获！&lt;/p&gt;</summary>
