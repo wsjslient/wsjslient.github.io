@@ -3068,12 +3068,11 @@ mark.search-keyword {
   }
 }
 body {
-  background-image: url("../images/backpic.jpg");
-  height: 100%;
-  width: 100%;
-  background-repeat: repeat-x;
+  background: url("../images/yourbackground.jpg");
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: 50% 50%;
   color: var(--text-color);
   font-family: Lato, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 1em;
