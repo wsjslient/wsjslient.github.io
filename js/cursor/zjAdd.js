@@ -13,9 +13,9 @@ function musicChange() {
     
     if(box.style.display == "none") {
         box.style.display = "inline-block";
-        element.style.zIndex = 100;
+        element.style.zIndex = -100;
     }else {
         box.style.display = "none";
-        element.style.zIndex = -100;
+        element.style.zIndex = 100;
     }
 }
