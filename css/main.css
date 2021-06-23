@@ -3070,6 +3070,10 @@ body {
 .content-wrap {
   opacity: 0.85;
 }
+.content {
+  padding-top: 15px;
+  opacity: 0.9;
+}
 .sidebar {
   opacity: 0.85;
 }
