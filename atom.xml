@@ -23,8 +23,6 @@
     <published>2021-06-21T03:37:42.000Z</published>
     <updated>2021-06-23T07:45:36.996Z</updated>
     
-    <content type="html"><![CDATA[<p>&nbsp;&nbsp;&nbsp;&nbsp;有一个属于自己的地方是一件美好的事情，我会尽我最大的努力来完善这里、充实这里，这是我第一篇的博客。我的博客主要记录学习方面的东西，如果有可能也会记录一些生活的点滴，希望能带给你一些帮助和收获！</p><span id="more"></span><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">shell不会对单引号里的内容做任何解释</span></span><br><span class="line">echo &#x27;Hello,world!&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">双引号里特殊符号！前需要加转义符</span></span><br><span class="line">echo &quot;Hello,world \!&quot;</span><br></pre></td></tr></table></figure>]]></content>
-    
     
     <summary type="html">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;有一个属于自己的地方是一件美好的事情，我会尽我最大的努力来完善这里、充实这里，这是我第一篇的博客。我的博客主要记录学习方面的东西，如果有可能也会记录一些生活的点滴，希望能带给你一些帮助和收获！&lt;/p&gt;</summary>
     
