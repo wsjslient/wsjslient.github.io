@@ -3169,8 +3169,11 @@ body {
   background-position: 50% 50%;
   background-size: cover;
 }
-.content {
-  opacity: 0.9;
+.content-wrap {
+  opacity: 0.85;
+}
+.main-inner {
+  opacity: 0.85;
 }
 .sidebar {
   opacity: 0.85;
