@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>NightFall</title>
   <icon>https://wsjslient.github.io/icon.png</icon>
-  <subtitle>NightFall写字的地方</subtitle>
+  <subtitle>Welcome To My Blog!</subtitle>
   <link href="https://wsjslient.github.io/atom.xml" rel="self"/>
   
   <link href="https://wsjslient.github.io/"/>
