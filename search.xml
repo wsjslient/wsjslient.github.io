@@ -3,9 +3,20 @@
   <entry>
     <title>My First Blog</title>
     <url>/2021/06/21/My-First-Blog/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有一个属于自己的<a href="https://wsjslient.github.io/" target="_blank">空间</a>是一件美好的事情，我会尽我最大的努力来完善这里、充实这里，这是我第一篇的博客。我的博客主要记录学习方面的东西，如果有可能也会记录一些生活的点滴，希望能带给你一些帮助和收获！</p>
+    <content><![CDATA[<div class="note info"><blockquote>
+<p>       有一个属于自己的<a href="https://wsjslient.github.io/" target="_blank">空间</a>是一件美好的事情，我会尽我最大的努力来完善这里、充实这里，这是我第一篇的博客。我的博客主要记录学习方面的东西，如果有可能也会记录一些生活的点滴，希望能带给你一些帮助和收获！</p>
+</blockquote>
+</div>
 <span id="more"></span>
-<h1 id="Code-Test"><a href="#Code-Test" class="headerlink" title="Code_Test"></a>Code_Test</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">shell不会对单引号里的内容做任何解释</span></span><br><span class="line">echo &#x27;Hello,world!&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash">双引号里特殊符号！前需要加转义符</span></span><br><span class="line">echo &quot;Hello,world \!&quot;</span><br></pre></td></tr></table></figure>]]></content>
+<h1>⭐️随便写写</h1>
+<blockquote>
+<p>       刚毕业那会工作时，还没有写博客记录的习惯。不过在工作中确实有很多知识需要记录，经朋友推荐当时是使用印象笔记来记录知识点。但是慢慢的发现这种方法并不是自己喜欢的，也用不习惯(主要还是自己太蠢了用不好)；后来工作时因为有各种搜索时，又接触到了csdn、github,不过由于自己英文太差，还是csdn用的更多，也开始在csdn上开通了自己的博客【<a href="https://blog.csdn.net/wsjslient/" target="_blank">我的csdn博客</a>】，也慢慢的养成了把自己学习到的知识记录到博客的习。渐渐的觉着写博客是一件幸福的事，但是越来越感觉csdn的博客无法满足自己的需求；看到别人的github博客确实很惊艳，首先这个搭建博客的过程确实很不错，而且这个博客你可以根据自己的需要随意变换，还能随意增加很多实用的功能，于是我的博客就开通了，试了很多的主题，还是next最吸引我，next的开发相比其他主题更加的深入，更加的多方面，集成的功能也更多，这也方便了自己的后续开发，希望能让自己的博客越来越好，也希望能认识更多的小伙伴，一起学习，一起进步！</p>
+</blockquote>
+<h1>⭐️我的工作&amp;兴趣</h1>
+<blockquote>
+<p>       截止2021年6月，已经入行大数据三年了，主要还是做数据开发方面的工作。对于自己的规划呢，希望能往架构的方向走吧，当然也会有很多基础知识的学习了，所以内容也是集中在这个方面。当然也会有生活向的内容更新，无他只为了记录这美好的生活！</p>
+</blockquote>
+]]></content>
       <categories>
         <category>daily</category>
       </categories>
