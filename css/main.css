@@ -3246,8 +3246,8 @@ body {
   background-position: 50% 50%;
   background-size: cover;
 }
-.content-wrap {
-  opacity: 1;
+.content {
+  opacity: 0.85;
 }
 .main-inner {
   opacity: 0.85;
