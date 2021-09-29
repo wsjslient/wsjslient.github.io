@@ -6,7 +6,7 @@
   <link href="https://wsjslient.github.io/atom.xml" rel="self"/>
   
   <link href="https://wsjslient.github.io/"/>
-  <updated>2021-07-02T08:18:17.841Z</updated>
+  <updated>2021-09-29T08:04:30.664Z</updated>
   <id>https://wsjslient.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spark Operator</title>
+    <link href="https://wsjslient.github.io/2021/09/29/spark-operator/"/>
+    <id>https://wsjslient.github.io/2021/09/29/spark-operator/</id>
+    <published>2021-09-29T07:53:57.000Z</published>
+    <updated>2021-09-29T08:04:30.664Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;RDD算子&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;Spark RDD算子一览：&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight scala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="spark" scheme="https://wsjslient.github.io/categories/spark/"/>
+    
+    
+    <category term="大数据" scheme="https://wsjslient.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="Spark" scheme="https://wsjslient.github.io/tags/Spark/"/>
+    
+  </entry>
   
   <entry>
     <title>My First Blog</title>

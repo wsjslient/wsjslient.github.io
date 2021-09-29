@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Spark Operator</title>
+    <url>/2021/09/29/spark-operator/</url>
+    <content><![CDATA[<h1>RDD算子</h1>
+<p><code>Spark RDD算子一览：</code></p>
+<figure class="highlight scala"><table><tr><td class="code"><pre><span class="line">++                    first                    max                  take</span><br><span class="line">aggregate             flatMap                  min                  takeAsync</span><br><span class="line">barrier               fold                     name                 takeOrdered</span><br><span class="line">cache                 foreach                  partitioner          takeSample</span><br><span class="line">canEqual              foreachAsync             partitions           toDF</span><br><span class="line">cartesian             foreachPartition         persist              toDS</span><br><span class="line">checkpoint            foreachPartitionAsync    pipe                 toDebugString</span><br><span class="line">coalesce              getCheckpointFile        preferredLocations   toJavaRDD</span><br><span class="line">collect               getNumPartitions         productArity         toLocalIterator</span><br><span class="line">collectAsync          getStorageLevel          productElement       toString</span><br><span class="line">compute               glom                     productIterator      top</span><br><span class="line">context               groupBy                  productPrefix        treeAggregate</span><br><span class="line">copy                  id                       randomSplit          treeReduce</span><br><span class="line">count                 intersection             reduce               union</span><br><span class="line">countApprox           isCheckpointed           repartition          unpersist</span><br><span class="line">countApproxDistinct   isEmpty                  sample               zip</span><br><span class="line">countAsync            iterator                 saveAsObjectFile     zipPartitions</span><br><span class="line">countByValue          keyBy                    saveAsTextFile       zipWithIndex</span><br><span class="line">countByValueApprox    localCheckpoint          setName              zipWithUniqueId</span><br><span class="line">dependencies          map                      sortBy</span><br><span class="line">distinct              mapPartitions            sparkContext</span><br><span class="line">filter                mapPartitionsWithIndex   subtract</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>spark</category>
+      </categories>
+      <tags>
+        <tag>大数据</tag>
+        <tag>Spark</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>My First Blog</title>
     <url>/2021/06/28/first/</url>
     <content><![CDATA[<p><img src="/2021/06/28/first/firstblog.jpg" alt></p>
