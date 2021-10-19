@@ -90,7 +90,7 @@
 
   
   <url>
-    <loc>https://wsjslient.github.io/categories/spark/</loc>
+    <loc>https://wsjslient.github.io/categories/CDH/</loc>
     <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -98,6 +98,13 @@
   
   <url>
     <loc>https://wsjslient.github.io/categories/daily/</loc>
+    <lastmod>2021-10-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wsjslient.github.io/categories/spark/</loc>
     <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

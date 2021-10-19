@@ -80,7 +80,7 @@
 <h2 id="二、新Gateway服务测试">二、新Gateway服务测试</h2>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> hadoop测试</span></span><br><span class="line">[root@single ~]$ hadoop fs -ls /</span><br><span class="line"><span class="meta">#</span><span class="bash"> yarn测试</span></span><br><span class="line">[root@single ~]$ yarn application --list</span><br><span class="line"><span class="meta">#</span><span class="bash"> hive测试</span></span><br><span class="line">[root@single ~]$ beeline -u jdbd:hive2//cdh01:10000/ods  -n test -p test123</span><br><span class="line"><span class="meta">#</span><span class="bash"> hbase测试</span></span><br><span class="line">[root@single ~]$ hbase shell</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>spark</category>
+        <category>CDH</category>
       </categories>
       <tags>
         <tag>大数据</tag>
