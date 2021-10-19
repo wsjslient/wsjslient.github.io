@@ -6,7 +6,7 @@
   <link href="https://wsjslient.github.io/atom.xml" rel="self"/>
   
   <link href="https://wsjslient.github.io/"/>
-  <updated>2021-09-29T08:04:30.664Z</updated>
+  <updated>2021-10-19T07:31:02.376Z</updated>
   <id>https://wsjslient.github.io/</id>
   
   <author>
@@ -17,18 +17,48 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CDH集群外配置非Kerberos环境的Gateway节点</title>
+    <link href="https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/"/>
+    <id>https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/</id>
+    <published>2021-10-19T06:11:37.000Z</published>
+    <updated>2021-10-19T07:31:02.376Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。&lt;/p&gt;
+&lt;/blockquo</summary>
+        
+      
+    
+    
+    
+    <category term="spark" scheme="https://wsjslient.github.io/categories/spark/"/>
+    
+    
+    <category term="大数据" scheme="https://wsjslient.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="CDH" scheme="https://wsjslient.github.io/tags/CDH/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spark Operator</title>
     <link href="https://wsjslient.github.io/2021/09/29/spark-operator/"/>
     <id>https://wsjslient.github.io/2021/09/29/spark-operator/</id>
     <published>2021-09-29T07:53:57.000Z</published>
-    <updated>2021-09-29T08:04:30.664Z</updated>
+    <updated>2021-09-29T08:48:07.246Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1&gt;RDD算子&lt;/h1&gt;
+    <summary type="html">&lt;h1&gt;🌈RDD算子&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;Spark RDD算子一览：&lt;/code&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight scala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
         

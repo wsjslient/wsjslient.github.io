@@ -40,26 +40,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wsjslient.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-<meta name="description" content="岂能尽如人意,但求无愧我心">
-<meta property="og:type" content="website">
-<meta property="og:title" content="NightFall">
-<meta property="og:url" content="https://wsjslient.github.io/tags/social/index.html">
+<meta name="description" content="前言  在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。   测试环境  CDH:5.16.1-1.cdh5.16.1.p0.3 操作系统：RedHat6.7    一、部署Gateway节点  在非CDH的服务器上部署Gateway节点  1.1 将集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CDH集群外配置非Kerberos环境的Gateway节点">
+<meta property="og:url" content="https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/index.html">
 <meta property="og:site_name" content="NightFall">
-<meta property="og:description" content="岂能尽如人意,但求无愧我心">
+<meta property="og:description" content="前言  在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。   测试环境  CDH:5.16.1-1.cdh5.16.1.p0.3 操作系统：RedHat6.7    一、部署Gateway节点  在非CDH的服务器上部署Gateway节点  1.1 将集">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-19T06:11:37.000Z">
+<meta property="article:modified_time" content="2021-10-19T07:31:02.376Z">
 <meta property="article:author" content="Curry">
-<meta property="article:tag" content="Learning Notes">
+<meta property="article:tag" content="大数据">
+<meta property="article:tag" content="CDH">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://wsjslient.github.io/tags/social/">
+<link rel="canonical" href="https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"tags/social/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/","path":"2021/10/19/CDH集群外配置非Kerberos环境的Gateway节点/","title":"CDH集群外配置非Kerberos环境的Gateway节点"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>标签: social | NightFall</title>
+<title>CDH集群外配置非Kerberos环境的Gateway节点 | NightFall</title>
   
 
 
@@ -156,7 +159,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -169,6 +172,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">一、部署Gateway节点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%B0%86%E9%9B%86%E7%BE%A4%E7%9A%84hosts%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5%E8%87%B3%E6%96%B0Gateway%E8%8A%82%E7%82%B9"><span class="nav-text">1.1 将集群的hosts文件同步至新Gateway节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%AE%89%E8%A3%85Java%E7%8E%AF%E5%A2%83"><span class="nav-text">1.2 安装Java环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E5%8E%8B%E7%BC%A9-opt-cloudera-parcels%E7%9B%AE%E5%BD%95%E6%8B%B7%E8%B4%9D%E8%87%B3%E6%96%B0Gateway%E8%8A%82%E7%82%B9"><span class="nav-text">1.3 压缩&#x2F;opt&#x2F;cloudera&#x2F;parcels目录拷贝至新Gateway节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E5%9C%A8%E6%96%B0Gateway%E8%8A%82%E7%82%B9%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E7%9B%AE%E5%BD%95"><span class="nav-text">1.4 在新Gateway节点创建配置文件存放目录\</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-6-%E9%85%8D%E7%BD%AE%E6%96%B0Gateway%E8%8A%82%E7%82%B9%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">1.6 配置新Gateway节点环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%96%B0Gateway%E6%9C%8D%E5%8A%A1%E6%B5%8B%E8%AF%95"><span class="nav-text">二、新Gateway服务测试</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -518,52 +522,219 @@ if(canvas.getContext){
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">social
-          <small>标签</small>
-        </h2>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Curry">
+      <meta itemprop="description" content="岂能尽如人意,但求无愧我心">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NightFall">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CDH集群外配置非Kerberos环境的Gateway节点
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-19 14:11:37 / 修改时间：15:31:02" itemprop="dateCreated datePublished" datetime="2021-10-19T14:11:37+08:00">2021-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/spark/" itemprop="url" rel="index"><span itemprop="name">spark</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fas fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
       </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1>前言</h1>
+<blockquote>
+<p>在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。</p>
+</blockquote>
+<ul>
+<li>测试环境
+<ul>
+<li>CDH:5.16.1-1.cdh5.16.1.p0.3</li>
+<li>操作系统：RedHat6.7</li>
+</ul>
+</li>
+</ul>
+<h1>一、部署Gateway节点</h1>
+<blockquote>
+<p>在非CDH的服务器上部署Gateway节点</p>
+</blockquote>
+<h2 id="1-1-将集群的hosts文件同步至新Gateway节点">1.1 将集群的hosts文件同步至新Gateway节点</h2>
+<blockquote>
+<p>将CM界面所有的Gateway节点的IP地址映射加入到新Gateway节点的hosts文件中</p>
+</blockquote>
+<h2 id="1-2-安装Java环境">1.2 安装Java环境</h2>
+<blockquote>
+<p>如果本机有java环境的话，则无需操作此步骤；若本机无Java环境，则可将集群的Java目录整体拷贝至该节点下</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">登录集群任意节点，将Java目录拷贝至新Gateway节点</span></span><br><span class="line">[root@cdh01 ~]$ scp -r /usr/java/jdk1.8.0_141/ single:/usr/java/</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-压缩-opt-cloudera-parcels目录拷贝至新Gateway节点">1.3 压缩/opt/cloudera/parcels目录拷贝至新Gateway节点</h2>
+<ul>
+<li>先在集群的任意一台节点上压缩并复制至新节点</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">这里压缩了两个目录到安装包里，CDH那个为软链，也可以只压缩实际目录</span></span><br><span class="line">[root@cdh01 parcels]$ tar -zcvf cdh.tar.gz CDH-5.14.2-1.cdh5.14.2.p0.3/ CDH/</span><br><span class="line">[root@cdh01 ~]$ scp -r /opt/cloudera/parcels/cdh.tar.gz single:/opt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新Gateway节点创建文件夹并解压</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@single ~]$ mkdir -p /opt/cloudera/parcels</span><br><span class="line">[root@single ~]$ tar -zxvf /opt/cdh.tar.gz -C /opt/cloudear/parcels/</span><br></pre></td></tr></table></figure>
+<h2 id="1-4-在新Gateway节点创建配置文件存放目录">1.4 在新Gateway节点创建配置文件存放目录\</h2>
+<ul>
+<li>新Gateway节点创建目录</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 根据需要创建相应配置文件存放目录</span></span><br><span class="line">[root@single ~]$ mkdir -p /etc/hadoop/conf</span><br><span class="line">[root@single ~]$ mkdir -p /etc/hbase/conf</span><br><span class="line">[root@single ~]$ mkdir -p /etc/hive/conf</span><br><span class="line">[root@single ~]$ mkdir -p /etc/spark/conf</span><br></pre></td></tr></table></figure>
+<ul>
+<li>登录拥有对应服务的Gateway节点将/etc/*/conf目录下的配置拷贝至新Gateway节点下</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scp -r /etc/hadoop/conf/* single:/etc/hadoop/conf/</span><br><span class="line">scp -r /etc/hbase/conf/* single:/etc/hbase/conf/</span><br><span class="line">scp -r /etc/hive/conf/* single:/etc/hive/conf/</span><br><span class="line">scp -r /etc/spark/conf/* single:/etc/spark/conf/</span><br></pre></td></tr></table></figure>
+<h2 id="1-6-配置新Gateway节点环境变量">1.6 配置新Gateway节点环境变量</h2>
+<ul>
+<li>修改/etc/profile，增加如下配置</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 这里注意和实际情况保持一致</span></span><br><span class="line">export  JAVA_HOME=/usr/java/jdk1.8.0_141</span><br><span class="line">export CDH_HOME=/opt/cloudera/parcels/CDH</span><br><span class="line">export PATH=$CDH_HOME/bin:$PATH</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启环境变量</span></span><br><span class="line">[root@single ~]$ source /etc/profile</span><br></pre></td></tr></table></figure>
+<h2 id="二、新Gateway服务测试">二、新Gateway服务测试</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> hadoop测试</span></span><br><span class="line">[root@single ~]$ hadoop fs -ls /</span><br><span class="line"><span class="meta">#</span><span class="bash"> yarn测试</span></span><br><span class="line">[root@single ~]$ yarn application --list</span><br><span class="line"><span class="meta">#</span><span class="bash"> hive测试</span></span><br><span class="line">[root@single ~]$ beeline -u jdbd:hive2//cdh01:10000/ods  -n test -p test123</span><br><span class="line"><span class="meta">#</span><span class="bash"> hbase测试</span></span><br><span class="line">[root@single ~]$ hbase shell</span><br></pre></td></tr></table></figure>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-28T14:21:46+08:00"
-              content="2021-06-28">
-          06-28
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/06/28/first/" itemprop="url">
-            <span itemprop="name">My First Blog</span>
-          </a>
-      </div>
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
 
       
-    </header>
-  </article>
-
     </div>
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Curry 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="Curry 支付宝">
+        <span>支付宝</span>
+      </div>
+
   </div>
-  
-  
-  
+</div>
 
-  <div id="gitalk-container"></div>
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Curry
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/" title="CDH集群外配置非Kerberos环境的Gateway节点">https://wsjslient.github.io/2021/10/19/CDH集群外配置非Kerberos环境的Gateway节点/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag"><i class="fas fa-tags"></i> 大数据</a>
+              <a href="/tags/CDH/" rel="tag"><i class="fas fa-tags"></i> CDH</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/29/spark-operator/" rel="prev" title="Spark Operator">
+                  <i class="fa fa-chevron-left"></i> Spark Operator
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+  
 </div>
   </main>
 
@@ -659,8 +830,25 @@ darkmode.showWidget();
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"wsjslient","repo":"github-comments","client_id":"3cf2d7cacd8911eb09e0","client_secret":"e91d4a79981f54bc76c73a2e6300c01cb2225b9a","admin_user":"wsjslient","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a98b09c3fcff8d510c65475663370933"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"wsjslient","repo":"github-comments","client_id":"3cf2d7cacd8911eb09e0","client_secret":"e91d4a79981f54bc76c73a2e6300c01cb2225b9a","admin_user":"wsjslient","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"0cceca5b77724ad6ed61cf3a33586567"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
+<link rel="stylesheet" href="[object Object]">
+
+<script>
+  NexT.utils.getScript('[object Object]', () => {
+    var gitalk = new Gitalk({
+      clientID: '3cf2d7cacd8911eb09e0',
+      clientSecret: 'e91d4a79981f54bc76c73a2e6300c01cb2225b9a',
+      repo: 'github-comments',
+      owner: 'wsjslient',
+      admin: ['wsjslient'],
+      id: '0cceca5b77724ad6ed61cf3a33586567',
+        language: 'zh-CN',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 <div class="moon-menu">
   <div class="moon-menu-items">
     
