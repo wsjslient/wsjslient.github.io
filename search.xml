@@ -72,7 +72,7 @@
 <li>登录拥有对应服务的Gateway节点将/etc/*/conf目录下的配置拷贝至新Gateway节点下</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">scp -r /etc/hadoop/conf/* single:/etc/hadoop/conf/</span><br><span class="line">scp -r /etc/hbase/conf/* single:/etc/hbase/conf/</span><br><span class="line">scp -r /etc/hive/conf/* single:/etc/hive/conf/</span><br><span class="line">scp -r /etc/spark/conf/* single:/etc/spark/conf/</span><br></pre></td></tr></table></figure>
-<h2 id="1-6-配置新Gateway节点环境变量">1.6 配置新Gateway节点环境变量</h2>
+<h2 id="1-5-配置新Gateway节点环境变量">1.5 配置新Gateway节点环境变量</h2>
 <ul>
 <li>修改/etc/profile，增加如下配置</li>
 </ul>
