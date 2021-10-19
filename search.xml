@@ -32,6 +32,7 @@
 <blockquote>
 <p>在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。</p>
 </blockquote>
+<span id="more"></span>
 <ul>
 <li>测试环境
 <ul>

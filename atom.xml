@@ -6,7 +6,7 @@
   <link href="https://wsjslient.github.io/atom.xml" rel="self"/>
   
   <link href="https://wsjslient.github.io/"/>
-  <updated>2021-10-19T07:31:18.872Z</updated>
+  <updated>2021-10-19T07:45:21.035Z</updated>
   <id>https://wsjslient.github.io/</id>
   
   <author>
@@ -21,19 +21,13 @@
     <link href="https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/"/>
     <id>https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/</id>
     <published>2021-10-19T06:11:37.000Z</published>
-    <updated>2021-10-19T07:31:18.872Z</updated>
+    <updated>2021-10-19T07:45:21.035Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。&lt;/p&gt;
-&lt;/blockquo</summary>
-        
-      
+&lt;/blockquote&gt;</summary>
     
     
     

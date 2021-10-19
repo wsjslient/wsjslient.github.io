@@ -40,15 +40,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"wsjslient.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-<meta name="description" content="前言  在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。   测试环境  CDH:5.16.1-1.cdh5.16.1.p0.3 操作系统：RedHat6.7    一、部署Gateway节点  在非CDH的服务器上部署Gateway节点  1.1 将集">
+<meta name="description" content="前言  在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CDH集群外配置非Kerberos环境的Gateway节点">
 <meta property="og:url" content="https://wsjslient.github.io/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/index.html">
 <meta property="og:site_name" content="NightFall">
-<meta property="og:description" content="前言  在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。   测试环境  CDH:5.16.1-1.cdh5.16.1.p0.3 操作系统：RedHat6.7    一、部署Gateway节点  在非CDH的服务器上部署Gateway节点  1.1 将集">
+<meta property="og:description" content="前言  在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-19T06:11:37.000Z">
-<meta property="article:modified_time" content="2021-10-19T07:31:18.872Z">
+<meta property="article:modified_time" content="2021-10-19T07:45:21.035Z">
 <meta property="article:author" content="Curry">
 <meta property="article:tag" content="大数据">
 <meta property="article:tag" content="CDH">
@@ -558,7 +558,7 @@ if(canvas.getContext){
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-10-19 14:11:37 / 修改时间：15:31:18" itemprop="dateCreated datePublished" datetime="2021-10-19T14:11:37+08:00">2021-10-19</time>
+      <time title="创建时间：2021-10-19 14:11:37 / 修改时间：15:45:21" itemprop="dateCreated datePublished" datetime="2021-10-19T14:11:37+08:00">2021-10-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -609,6 +609,7 @@ if(canvas.getContext){
 <blockquote>
 <p>在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。</p>
 </blockquote>
+<span id="more"></span>
 <ul>
 <li>测试环境
 <ul>

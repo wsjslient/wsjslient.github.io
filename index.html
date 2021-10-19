@@ -712,7 +712,7 @@ if(canvas.getContext){
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-10-19 14:11:37 / 修改时间：15:31:18" itemprop="dateCreated datePublished" datetime="2021-10-19T14:11:37+08:00">2021-10-19</time>
+      <time title="创建时间：2021-10-19 14:11:37 / 修改时间：15:45:21" itemprop="dateCreated datePublished" datetime="2021-10-19T14:11:37+08:00">2021-10-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -756,52 +756,14 @@ if(canvas.getContext){
 <blockquote>
 <p>在使用CDH集群时，总会遇到在集群外的服务器想访问大数据集群的服务的情况（例如第三方服务的服务器），这时候又不想添加到CDH集群中管理，这时可以在集群外不通过CM部署一个新的Gateway节点。</p>
 </blockquote>
-<ul>
-<li>测试环境
-<ul>
-<li>CDH:5.16.1-1.cdh5.16.1.p0.3</li>
-<li>操作系统：RedHat6.7</li>
-</ul>
-</li>
-</ul>
-<h1>一、部署Gateway节点</h1>
-<blockquote>
-<p>在非CDH的服务器上部署Gateway节点</p>
-</blockquote>
-<h2 id="1-1-将集群的hosts文件同步至新Gateway节点">1.1 将集群的hosts文件同步至新Gateway节点</h2>
-<blockquote>
-<p>将CM界面所有的Gateway节点的IP地址映射加入到新Gateway节点的hosts文件中</p>
-</blockquote>
-<h2 id="1-2-安装Java环境">1.2 安装Java环境</h2>
-<blockquote>
-<p>如果本机有java环境的话，则无需操作此步骤；若本机无Java环境，则可将集群的Java目录整体拷贝至该节点下</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">登录集群任意节点，将Java目录拷贝至新Gateway节点</span></span><br><span class="line">[root@cdh01 ~]$ scp -r /usr/java/jdk1.8.0_141/ single:/usr/java/</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-压缩-opt-cloudera-parcels目录拷贝至新Gateway节点">1.3 压缩/opt/cloudera/parcels目录拷贝至新Gateway节点</h2>
-<ul>
-<li>先在集群的任意一台节点上压缩并复制至新节点</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">这里压缩了两个目录到安装包里，CDH那个为软链，也可以只压缩实际目录</span></span><br><span class="line">[root@cdh01 parcels]$ tar -zcvf cdh.tar.gz CDH-5.14.2-1.cdh5.14.2.p0.3/ CDH/</span><br><span class="line">[root@cdh01 ~]$ scp -r /opt/cloudera/parcels/cdh.tar.gz single:/opt</span><br></pre></td></tr></table></figure>
-<ul>
-<li>新Gateway节点创建文件夹并解压</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@single ~]$ mkdir -p /opt/cloudera/parcels</span><br><span class="line">[root@single ~]$ tar -zxvf /opt/cdh.tar.gz -C /opt/cloudear/parcels/</span><br></pre></td></tr></table></figure>
-<h2 id="1-4-在新Gateway节点创建配置文件存放目录">1.4 在新Gateway节点创建配置文件存放目录\</h2>
-<ul>
-<li>新Gateway节点创建目录</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 根据需要创建相应配置文件存放目录</span></span><br><span class="line">[root@single ~]$ mkdir -p /etc/hadoop/conf</span><br><span class="line">[root@single ~]$ mkdir -p /etc/hbase/conf</span><br><span class="line">[root@single ~]$ mkdir -p /etc/hive/conf</span><br><span class="line">[root@single ~]$ mkdir -p /etc/spark/conf</span><br></pre></td></tr></table></figure>
-<ul>
-<li>登录拥有对应服务的Gateway节点将/etc/*/conf目录下的配置拷贝至新Gateway节点下</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scp -r /etc/hadoop/conf/* single:/etc/hadoop/conf/</span><br><span class="line">scp -r /etc/hbase/conf/* single:/etc/hbase/conf/</span><br><span class="line">scp -r /etc/hive/conf/* single:/etc/hive/conf/</span><br><span class="line">scp -r /etc/spark/conf/* single:/etc/spark/conf/</span><br></pre></td></tr></table></figure>
-<h2 id="1-6-配置新Gateway节点环境变量">1.6 配置新Gateway节点环境变量</h2>
-<ul>
-<li>修改/etc/profile，增加如下配置</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 这里注意和实际情况保持一致</span></span><br><span class="line">export  JAVA_HOME=/usr/java/jdk1.8.0_141</span><br><span class="line">export CDH_HOME=/opt/cloudera/parcels/CDH</span><br><span class="line">export PATH=$CDH_HOME/bin:$PATH</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启环境变量</span></span><br><span class="line">[root@single ~]$ source /etc/profile</span><br></pre></td></tr></table></figure>
-<h2 id="二、新Gateway服务测试">二、新Gateway服务测试</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> hadoop测试</span></span><br><span class="line">[root@single ~]$ hadoop fs -ls /</span><br><span class="line"><span class="meta">#</span><span class="bash"> yarn测试</span></span><br><span class="line">[root@single ~]$ yarn application --list</span><br><span class="line"><span class="meta">#</span><span class="bash"> hive测试</span></span><br><span class="line">[root@single ~]$ beeline -u jdbd:hive2//cdh01:10000/ods  -n test -p test123</span><br><span class="line"><span class="meta">#</span><span class="bash"> hbase测试</span></span><br><span class="line">[root@single ~]$ hbase shell</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
