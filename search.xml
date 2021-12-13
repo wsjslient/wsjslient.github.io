@@ -63,7 +63,7 @@
 <li>新Gateway节点创建文件夹并解压</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@single ~]$ mkdir -p /opt/cloudera/parcels</span><br><span class="line">[root@single ~]$ tar -zxvf /opt/cdh.tar.gz -C /opt/cloudear/parcels/</span><br></pre></td></tr></table></figure>
-<h2 id="1-4-在新Gateway节点创建配置文件存放目录">1.4 在新Gateway节点创建配置文件存放目录\</h2>
+<h2 id="1-4-在新Gateway节点创建配置文件存放目录">1.4 在新Gateway节点创建配置文件存放目录</h2>
 <ul>
 <li>新Gateway节点创建目录</li>
 </ul>

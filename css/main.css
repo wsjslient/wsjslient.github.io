@@ -3217,17 +3217,17 @@ body {
   background-size: cover;
 }
 .content {
-  opacity: 0.85;
+  opacity: 1;
 }
 .main-inner {
-  opacity: 0.85;
+  opacity: 1;
 }
 .sidebar {
-  opacity: 0.85;
+  opacity: 1;
 }
 .header-inner {
-  background: rgba(255,255,255,0.85);
+  background: #fff;
 }
 .popup {
-  opacity: 0.85;
+  opacity: 1;
 }
