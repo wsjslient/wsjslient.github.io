@@ -37,10 +37,10 @@
 <ul>
 <li>参数：
 <ul>
-<li>请求地址：url  <code>e.g. http://192.168.1.107:7777/api/test</code></li>
-<li>参数：bodys  <code>键值对Map对象</code></li>
-<li>请求头：headers <code>键值对Map对象</code></li>
-<li>方法名：method <code>e.g. POST/PUT</code></li>
+<li>请求地址：url  <code>e.g. http://192.168.1.107:7777/api/test</code>;</li>
+<li>参数：bodys  <code>键值对Map对象</code>;</li>
+<li>请求头：headers <code>键值对Map对象</code>;</li>
+<li>方法名：method <code>e.g. POST/PUT</code>;</li>
 </ul>
 </li>
 </ul>
