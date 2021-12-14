@@ -588,7 +588,7 @@ pre:hover .copy-btn {
 }
 figure.highlight {
   border-radius: 5px;
-  box-shadow: 0 10px 30px 0 rgba(0,0,0,0.4);
+  box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.2);
   padding-top: 30px;
 }
 figure.highlight .table-container {
