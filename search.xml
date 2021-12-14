@@ -26,6 +26,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Java发送http请求</title>
+    <url>/2021/12/14/Java%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/</url>
+    <content><![CDATA[<h1>前言</h1>
+<blockquote>
+<p>项目上有时候需要发送http请求并获取返回的Json结果，这里记录下请求和接受返回的方法。</p>
+</blockquote>
+<span id="more"></span>
+<h1>使用Java自带方法发送http请求</h1>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">sendPostRequest</span><span class="params">(String url, Map&lt;String,String&gt; bodys,Map&lt;String,String&gt; headers,String method)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    Set&lt;Map.Entry&lt;String,String&gt;&gt; entrys = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span>(bodys!=<span class="keyword">null</span> &amp;&amp; !bodys.isEmpty())&#123;</span><br><span class="line">        entrys = bodys.entrySet();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry : entrys) &#123;</span><br><span class="line">            builder.append(entry.getKey()).append(<span class="string">&quot;=&quot;</span>).append(URLEncoder.encode(entry.getValue()==<span class="keyword">null</span>?<span class="string">&quot;&quot;</span>:entry.getValue(),<span class="string">&quot;UTF-8&quot;</span>)).append(<span class="string">&quot;&amp;&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        builder.deleteCharAt(builder.length() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    URL _url = <span class="keyword">new</span> URL(url);</span><br><span class="line">    HttpURLConnection con = (HttpURLConnection)_url.openConnection();</span><br><span class="line">    <span class="keyword">if</span>(headers!=<span class="keyword">null</span> &amp;&amp; !headers.isEmpty())&#123;</span><br><span class="line">        entrys = headers.entrySet();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, String&gt; entry : entrys) &#123;</span><br><span class="line">            con.setRequestProperty(entry.getKey(),entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    con.setRequestMethod(method);</span><br><span class="line">    con.setDoOutput(<span class="keyword">true</span>);</span><br><span class="line">    con.setDoInput(<span class="keyword">true</span>);</span><br><span class="line">    OutputStream os = con.getOutputStream();</span><br><span class="line">    os.write(builder.toString().getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">    os.flush();</span><br><span class="line">    os.close();</span><br><span class="line"></span><br><span class="line">    String str = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(con.getResponseCode() == <span class="number">200</span>)&#123;</span><br><span class="line">        BufferedReader reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(con.getInputStream()));</span><br><span class="line">        str = reader.readLine();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CDH集群外配置非Kerberos环境的Gateway节点</title>
     <url>/2021/10/19/CDH%E9%9B%86%E7%BE%A4%E5%A4%96%E9%85%8D%E7%BD%AE%E9%9D%9EKerberos%E7%8E%AF%E5%A2%83%E7%9A%84Gateway%E8%8A%82%E7%82%B9/</url>
     <content><![CDATA[<h1>前言</h1>

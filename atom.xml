@@ -6,7 +6,7 @@
   <link href="https://wsjslient.github.io/atom.xml" rel="self"/>
   
   <link href="https://wsjslient.github.io/"/>
-  <updated>2021-10-19T07:59:30.667Z</updated>
+  <updated>2021-12-14T08:37:30.232Z</updated>
   <id>https://wsjslient.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java发送http请求</title>
+    <link href="https://wsjslient.github.io/2021/12/14/Java%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/"/>
+    <id>https://wsjslient.github.io/2021/12/14/Java%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/</id>
+    <published>2021-12-14T08:18:47.000Z</published>
+    <updated>2021-12-14T08:37:30.232Z</updated>
+    
+    
+    <summary type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;项目上有时候需要发送http请求并获取返回的Json结果，这里记录下请求和接受返回的方法。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="Java" scheme="https://wsjslient.github.io/categories/Java/"/>
+    
+    
+    <category term="Java" scheme="https://wsjslient.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>CDH集群外配置非Kerberos环境的Gateway节点</title>
