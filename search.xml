@@ -27,12 +27,13 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux文件切割命令——split</title>
+    <title>Linux文件切割命令——Split</title>
     <url>/2021/12/31/Linux%E6%96%87%E4%BB%B6%E5%88%87%E5%89%B2%E5%91%BD%E4%BB%A4%E2%80%94%E2%80%94split/</url>
     <content><![CDATA[<h1>前言</h1>
 <blockquote>
 <p>项目取数过程中遇见文件大小超过最大范围的时候，此时想着通过切割文件的方式来解决，最后找到了<code>split</code>命令，这里记录下来使用方法方便下次使用。</p>
 </blockquote>
+<span id="more"></span>
 <h1>split命令参数</h1>
 <blockquote>
 <p>split [–help][–version][-&lt;行数&gt;][-b &lt;字节&gt;][-C &lt;字节&gt;][-l &lt;行数&gt;][-a [num]][要切割的文件][输出文件名]</p>

@@ -704,7 +704,7 @@ if(canvas.getContext){
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/31/Linux%E6%96%87%E4%BB%B6%E5%88%87%E5%89%B2%E5%91%BD%E4%BB%A4%E2%80%94%E2%80%94split/" class="post-title-link" itemprop="url">Linux文件切割命令——split</a>
+          <a href="/2021/12/31/Linux%E6%96%87%E4%BB%B6%E5%88%87%E5%89%B2%E5%91%BD%E4%BB%A4%E2%80%94%E2%80%94split/" class="post-title-link" itemprop="url">Linux文件切割命令——Split</a>
         </h2>
 
         <div class="post-meta-container">
@@ -716,7 +716,7 @@ if(canvas.getContext){
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-12-31 14:43:04 / 修改时间：16:04:25" itemprop="dateCreated datePublished" datetime="2021-12-31T14:43:04+08:00">2021-12-31</time>
+      <time title="创建时间：2021-12-31 14:43:04 / 修改时间：16:22:14" itemprop="dateCreated datePublished" datetime="2021-12-31T14:43:04+08:00">2021-12-31</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -764,33 +764,14 @@ if(canvas.getContext){
 <blockquote>
 <p>项目取数过程中遇见文件大小超过最大范围的时候，此时想着通过切割文件的方式来解决，最后找到了<code>split</code>命令，这里记录下来使用方法方便下次使用。</p>
 </blockquote>
-<h1>split命令参数</h1>
-<blockquote>
-<p>split [–help][–version][-&lt;行数&gt;][-b &lt;字节&gt;][-C &lt;字节&gt;][-l &lt;行数&gt;][-a [num]][要切割的文件][输出文件名]</p>
-</blockquote>
-<ul>
-<li>
-<p>必须添加的参数 [切割参数:-/-l/l] [要切割的文件]</p>
-</li>
-<li>
-<p>- &amp; -l : 指定行数切割;</p>
-</li>
-<li>
-<p>-b &amp; -C : 指定大小切割,支持[K, M, G, T, P, E, Z], -C 切割时将尽量维持每行的完整性;</p>
-</li>
-<li>
-<p>-d : 指定切割包的后缀为数字;</p>
-</li>
-<li>
-<p>-a [NUM] : 设置后缀长度;(e.g. -a 2 --表示后缀长度为 2,在不指定后缀的情况下默认为小写英文字母)</p>
-</li>
-<li>
-<p>[输出文件名] : 设置切割后文件的前置文件名，split 会自动在前置文件名后再加上编号</p>
-</li>
-</ul>
-<h1>示例</h1>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 按照行数切割 test.xlsx</span></span><br><span class="line">[root@sole ~]# split -300 -d -a 1 test.xlsx test.xlsx.      # -d不加则是以a b c结尾 ,-a 1 设置了后缀的长度</span><br><span class="line">[root@sole ~]# split -l 300 -d -a 1 test.xlsx test.xlsx.</span><br><span class="line"><span class="meta">#</span><span class="bash"> 按行切割效果</span></span><br><span class="line">-rw-r--r-- 1 root root 186317 Sep 30 11:34 test.xlsx</span><br><span class="line">-rw-r--r-- 1 root root  82185 Dec 31 15:52 test.xlsx.1</span><br><span class="line">-rw-r--r-- 1 root root  62744 Dec 31 15:52 test.xlsx.2</span><br><span class="line">-rw-r--r-- 1 root root  41388 Dec 31 15:52 test.xlsx.3</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 按照大小切割 test.xlsx</span></span><br><span class="line">[root@sole test]# split -b 60K -d -a 1 test.xlsx test.xlsx.</span><br><span class="line">[root@sole test]# split -C 60K -d -a 1 test.xlsx test.xlsx.</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -b切割效果</span></span><br><span class="line">-rw-r--r-- 1 root root 182K Sep 30 11:34 test.xlsx</span><br><span class="line">-rw-r--r-- 1 root root  60K Dec 31 15:56 test.xlsx.1</span><br><span class="line">-rw-r--r-- 1 root root  60K Dec 31 15:56 test.xlsx.2</span><br><span class="line">-rw-r--r-- 1 root root  60K Dec 31 15:56 test.xlsx.3</span><br><span class="line">-rw-r--r-- 1 root root 2.0K Dec 31 15:56 test.xlsx.4</span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 切割效果</span></span><br><span class="line">-rw-r--r-- 1 root root 182K Sep 30 11:34 test.xlsx</span><br><span class="line">-rw-r--r-- 1 root root  60K Dec 31 15:57 test.xlsx.1</span><br><span class="line">-rw-r--r-- 1 root root  60K Dec 31 15:57 test.xlsx.2</span><br><span class="line">-rw-r--r-- 1 root root  60K Dec 31 15:57 test.xlsx.3</span><br><span class="line">-rw-r--r-- 1 root root 2.6K Dec 31 15:57 test.xlsx.4</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/12/31/Linux%E6%96%87%E4%BB%B6%E5%88%87%E5%89%B2%E5%91%BD%E4%BB%A4%E2%80%94%E2%80%94split/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
