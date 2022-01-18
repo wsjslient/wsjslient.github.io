@@ -6,7 +6,7 @@
   <link href="https://wsjslient.github.io/atom.xml" rel="self"/>
   
   <link href="https://wsjslient.github.io/"/>
-  <updated>2021-12-31T08:22:14.556Z</updated>
+  <updated>2022-01-18T03:55:14.071Z</updated>
   <id>https://wsjslient.github.io/</id>
   
   <author>
@@ -15,6 +15,102 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Excel VBA学习——数组和字典</title>
+    <link href="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84%E5%92%8C%E5%AD%97%E5%85%B8/"/>
+    <id>https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84%E5%92%8C%E5%AD%97%E5%85%B8/</id>
+    <published>2022-01-18T03:52:48.000Z</published>
+    <updated>2022-01-18T03:55:14.071Z</updated>
+    
+    
+    <summary type="html">&lt;h1&gt;Excel VBA学习——数组和字典&lt;/h1&gt;
+&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;数组和字典也是VBA的常用到数据类型之一。&lt;/p&gt;
+&lt;p&gt;事实上，字典不是VBA内置的类型，它是Windows脚本语言的。但其实字典在VBA中也是非常重要的，它非常适用于需要进行非重复性数据的操作。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;</summary>
+    
+    
+    
+    <category term="Study" scheme="https://wsjslient.github.io/categories/Study/"/>
+    
+    <category term="VBA" scheme="https://wsjslient.github.io/categories/Study/VBA/"/>
+    
+    
+    <category term="Excel" scheme="https://wsjslient.github.io/tags/Excel/"/>
+    
+    <category term="VBA" scheme="https://wsjslient.github.io/tags/VBA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Excel VBA学习——数据类型</title>
+    <link href="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    <id>https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</id>
+    <published>2022-01-18T03:47:22.000Z</published>
+    <updated>2022-01-18T03:55:05.162Z</updated>
+    
+    
+    <summary type="html">&lt;h1&gt;Excel VBA学习——数据类型&lt;/h1&gt;
+&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;与其它的编程语言一样，VBA也有它自己的数据类型。讲到数据类型，就离不开“变量”与“常量”这两个概念，变量与常量，都是用于保存数据的。顾名思义，“变量”是会变的，即它的值是可以改变的；而常量，则它的值通常是固定不变的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;为什么要定义数据类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定义合适的数据类型可以节省内存空间，提高程序运行的效率；&lt;/li&gt;
+&lt;li&gt;便于程序进行计算（数值型）和其它使用（非数值型）；&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="Study" scheme="https://wsjslient.github.io/categories/Study/"/>
+    
+    <category term="VBA" scheme="https://wsjslient.github.io/categories/Study/VBA/"/>
+    
+    
+    <category term="Excel" scheme="https://wsjslient.github.io/tags/Excel/"/>
+    
+    <category term="VBA" scheme="https://wsjslient.github.io/tags/VBA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Excel VBA学习——入门</title>
+    <link href="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/"/>
+    <id>https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/</id>
+    <published>2022-01-18T03:38:09.000Z</published>
+    <updated>2022-01-18T03:54:54.379Z</updated>
+    
+    
+    <summary type="html">&lt;h1&gt;Excel VBA学习——入门&lt;/h1&gt;
+&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;宏[macro]：一组可以自动执行的代码[vba]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：重复执行相同的操作，可以考虑用宏；&lt;/li&gt;
+&lt;li&gt;缺点：不够智能，无法交互工作，代码冗余；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;解决方案：&lt;code&gt;vba&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;</summary>
+    
+    
+    
+    <category term="Study" scheme="https://wsjslient.github.io/categories/Study/"/>
+    
+    <category term="VBA" scheme="https://wsjslient.github.io/categories/Study/VBA/"/>
+    
+    
+    <category term="Excel" scheme="https://wsjslient.github.io/tags/Excel/"/>
+    
+    <category term="VBA" scheme="https://wsjslient.github.io/tags/VBA/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux文件切割命令——Split</title>

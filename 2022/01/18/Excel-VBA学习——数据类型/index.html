@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next-wind.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next-wind.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/62aff724.js","daovoice")
+  daovoice('init', {
+      app_id: "62aff724"
+    });
+  daovoice('update');
+  </script>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Lato:ital@1&family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com//css?family=Lato:300,300italic,400,400italic,700,700italic%7CCinzel+Decorative:300,300italic,400,400italic,700,700italic%7CSource+Code+Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wsjslient.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.5.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+<meta name="description" content="Excel VBA学习——数据类型 前言  与其它的编程语言一样，VBA也有它自己的数据类型。讲到数据类型，就离不开“变量”与“常量”这两个概念，变量与常量，都是用于保存数据的。顾名思义，“变量”是会变的，即它的值是可以改变的；而常量，则它的值通常是固定不变的。  为什么要定义数据类型：  定义合适的数据类型可以节省内存空间，提高程序运行的效率； 便于程序进行计算（数值型）和其它使用（非数值型）；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Excel VBA学习——数据类型">
+<meta property="og:url" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="NightFall">
+<meta property="og:description" content="Excel VBA学习——数据类型 前言  与其它的编程语言一样，VBA也有它自己的数据类型。讲到数据类型，就离不开“变量”与“常量”这两个概念，变量与常量，都是用于保存数据的。顾名思义，“变量”是会变的，即它的值是可以改变的；而常量，则它的值通常是固定不变的。  为什么要定义数据类型：  定义合适的数据类型可以节省内存空间，提高程序运行的效率； 便于程序进行计算（数值型）和其它使用（非数值型）；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E5%B0%8F%E6%95%B0.png">
+<meta property="og:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E6%97%B6%E9%97%B4.png">
+<meta property="og:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E6%97%B6%E9%97%B4%E5%9B%9B.png">
+<meta property="og:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E4%BA%8C.png">
+<meta property="og:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E4%B8%89.png">
+<meta property="og:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E4%BA%94.png">
+<meta property="og:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E5%85%AD.png">
+<meta property="og:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png">
+<meta property="og:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%9E%9A%E4%B8%BE.png">
+<meta property="article:published_time" content="2022-01-18T03:47:22.000Z">
+<meta property="article:modified_time" content="2022-01-18T03:55:05.162Z">
+<meta property="article:author" content="Curry">
+<meta property="article:tag" content="Excel">
+<meta property="article:tag" content="VBA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E5%B0%8F%E6%95%B0.png">
+
+
+<link rel="canonical" href="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/","path":"2022/01/18/Excel-VBA学习——数据类型/","title":"Excel VBA学习——数据类型"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Excel VBA学习——数据类型 | NightFall</title>
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="NightFall" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/wsjslient/wsjslient.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">NightFall</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Welcome To My Blog!</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fas fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fas fa-sun fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fas fa-tags fa-fw"></i>标签<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fas fa-basketball-ball fa-fw"></i>分类<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fas fa-archive fa-fw"></i>归档<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Excel VBA学习——数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F"><span class="nav-text">变量和常量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="nav-text">a. 定义变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-%E5%AE%9A%E4%B9%89%E5%B8%B8%E9%87%8F"><span class="nav-text">b. 定义常量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">一、数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%AD%97%E7%AC%A6%E5%9E%8B%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89"><span class="nav-text">1.1 字符型（字符串）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%95%B0%E5%80%BC%E5%9E%8B"><span class="nav-text">1.2 数值型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-%E6%95%B4%E6%95%B0"><span class="nav-text">1.2.1 整数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-text">1.2.2浮点数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E6%97%B6%E9%97%B4%E5%9E%8B"><span class="nav-text">1.3. 时间型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-%E8%BF%94%E5%9B%9E%E5%BD%93%E5%89%8D%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="nav-text">1.3.1 返回当前日期时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E8%AE%BE%E5%AE%9A"><span class="nav-text">1.3.2 时间日期设定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-3-%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%A5%E6%9C%9F"><span class="nav-text">1.3.3 格式化日期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-4-%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E7%9A%84%E9%83%A8%E5%88%86"><span class="nav-text">1.3.4 获取时间的部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-5-%E6%97%A5%E6%9C%9F%E9%97%B4%E9%9A%94"><span class="nav-text">1.3.5 日期间隔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-6-%E6%97%A5%E6%9C%9F%E5%8A%A0%E5%87%8F"><span class="nav-text">1.3.6 日期加减</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%B8%83%E5%B0%94%E5%9E%8B"><span class="nav-text">1.4.布尔型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E5%8F%98%E4%BD%93%E5%9E%8B"><span class="nav-text">1.5. 变体型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E5%AF%B9%E8%B1%A1%E5%9E%8B"><span class="nav-text">1.6. 对象型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-%E6%9E%9A%E4%B8%BE%E5%9E%8B"><span class="nav-text">1.7. 枚举型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-text">二、数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="nav-text">2.1 类型转换函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-CStr"><span class="nav-text">2.1.1 CStr</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-CBool"><span class="nav-text">2.1.2 CBool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-CByte"><span class="nav-text">2.1.3  CByte</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-CInt"><span class="nav-text">2.1.4 CInt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-5-CLng"><span class="nav-text">2.1.5 CLng</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-6-CSng"><span class="nav-text">2.1.6 CSng</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-7-CDbl"><span class="nav-text">2.1.7 CDbl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-8-CCur"><span class="nav-text">2.1.8 CCur</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-9-CDate"><span class="nav-text">2.1.9 CDate</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Format%E5%87%BD%E6%95%B0"><span class="nav-text">2.2 Format函数</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Curry"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Curry</p>
+  <div class="site-description" itemprop="description">岂能尽如人意,但求无愧我心</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wsjslient" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wsjslient" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/wsjslient" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;wsjslient" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-cuttlefish fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://wsjslient@foxmail.com/" title="E-Mail → https:&#x2F;&#x2F;wsjslient@foxmail.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="far fa-paper-plane fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/bu-dong-zhuang-dong-5" title="zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;bu-dong-zhuang-dong-5" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/u/3959854350/home" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;u&#x2F;3959854350&#x2F;home" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://steamcommunity.com/id/NightFallSlient/home/" title="Steam → https:&#x2F;&#x2F;steamcommunity.com&#x2F;id&#x2F;NightFallSlient&#x2F;home&#x2F;" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-steam fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener external nofollow noreferrer" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+          </div>
+        </div>
+    </div>
+    <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1861093075&auto=1&height=66"></iframe>
+    </div>
+      
+           
+         
+        <div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+  <a href="https://github.com/wsjslient" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener external nofollow noreferrer" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Curry">
+      <meta itemprop="description" content="岂能尽如人意,但求无愧我心">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NightFall">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Excel VBA学习——数据类型
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-18 11:47:22 / 修改时间：11:55:05" itemprop="dateCreated datePublished" datetime="2022-01-18T11:47:22+08:00">2022-01-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Study/" itemprop="url" rel="index"><span itemprop="name">Study</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Study/VBA/" itemprop="url" rel="index"><span itemprop="name">VBA</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fas fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+
+      
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1>Excel VBA学习——数据类型</h1>
+<h2 id="前言">前言</h2>
+<blockquote>
+<p>与其它的编程语言一样，VBA也有它自己的数据类型。讲到数据类型，就离不开“变量”与“常量”这两个概念，变量与常量，都是用于保存数据的。顾名思义，“变量”是会变的，即它的值是可以改变的；而常量，则它的值通常是固定不变的。</p>
+</blockquote>
+<p>为什么要定义数据类型：</p>
+<ul>
+<li>定义合适的数据类型可以节省内存空间，提高程序运行的效率；</li>
+<li>便于程序进行计算（数值型）和其它使用（非数值型）；</li>
+</ul>
+<span id="more"></span>
+<h2 id="变量和常量">变量和常量</h2>
+<h3 id="a-定义变量">a. 定义变量</h3>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 变量名可以是英文字母、数字、下划线的组合，但必须以字母开头</span><br><span class="line">Dim 变量名 As 数据类型</span><br><span class="line">&#x27; -------------------------------------------------</span><br><span class="line">&#x27; 变量的赋值则直接使用一个等号进行</span><br><span class="line">Dim i as Integer</span><br><span class="line">i = 3</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="b-定义常量">b. 定义常量</h3>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Const 常量名 As 数据类型 = 常量值</span><br><span class="line">&#x27; ----------------------------</span><br><span class="line">&#x27; e.g. 如下定义一个整数常量</span><br><span class="line">Const h As Integer = 18</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="一、数据类型">一、数据类型</h2>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>存储空间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>2个字节</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>1个字节</td>
+</tr>
+<tr>
+<td>Collection</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>8个字节</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>8个字节</td>
+</tr>
+<tr>
+<td>Decimal</td>
+<td>14个字节</td>
+</tr>
+<tr>
+<td>Dictionary</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>8个字节</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>2个字节</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>4个字节</td>
+</tr>
+<tr>
+<td>LongLong</td>
+<td>8个字节</td>
+</tr>
+<tr>
+<td>LongPtr</td>
+<td>32位系统：4个字节<br>64位系统：8个字节</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>4个字节</td>
+</tr>
+<tr>
+<td>String(可变长度)</td>
+<td>10字节+字符串长度</td>
+</tr>
+<tr>
+<td>String(定长)</td>
+<td>字符串长度</td>
+</tr>
+<tr>
+<td>Variant(带数字)</td>
+<td>16个字节</td>
+</tr>
+<tr>
+<td>Variant(带字符)</td>
+<td>22字节+字符串长度</td>
+</tr>
+<tr>
+<td>用户定义(使用Type)</td>
+<td>元素所需的数字</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>下面举例一些常用的数据类型：</code></p>
+<h3 id="1-1-字符型（字符串）">1.1 字符型（字符串）</h3>
+<p>字符型：string 	<code>字符型是用于保存文本数据的，字符型内容应放置于双引号内 &quot;&quot; </code> ;</p>
+<p>字符串符号：<code>$</code>；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 数据声明</span><br><span class="line">Dim str1 as String </span><br><span class="line">Dim str2$</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1-2-数值型">1.2 数值型</h3>
+<h4 id="1-2-1-整数">1.2.1 整数</h4>
+<p>整数：integer【整数】、long【长整数】  currency【缩放整数】<code>表示整数</code></p>
+<p>整数符号：<code>%</code>；</p>
+<p>长整数符号：<code>&amp;</code>；</p>
+<p>缩放整数符号：<code>@</code>；</p>
+<p>整数与长整数的区别在于两者所能表示的数值范围不同：</p>
+<ul>
+<li>整数数据能表示的数据范围：-32768 ~ 32767</li>
+<li>长整数数据能表示的数据范围：-2147483648 ~ 2147483647</li>
+<li>缩放整数数据能表示的数据范围：-922,337,203,685,477.5808 到 922,337,203,685,477.5807</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 整数数据声明</span><br><span class="line">Dim a as Interger</span><br><span class="line">Dim b%</span><br><span class="line">&#x27; 长整数数据声明</span><br><span class="line">Dim c as Long</span><br><span class="line">Dim d&amp;</span><br><span class="line">&#x27; 缩放整数声明</span><br><span class="line">Dim e as Currency</span><br><span class="line">Dim f@</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>补充：还有byte【字节】、longlong【整数的一种，只在64位平台上生效】</p>
+</blockquote>
+<hr>
+<h4 id="1-2-2浮点数">1.2.2浮点数</h4>
+<p>浮点型：single【单精度浮点型】、double【双精度浮点型】  <code>表示小数</code></p>
+<p>单精度符号：<code>!</code>；</p>
+<p>双精度符号：<code>#</code>；</p>
+<p><strong>单精度浮点数与双精度浮点数除了在数值范围不同之外，两者所能表示的数据精度（即小数点后多少位）也是不同的；</strong></p>
+<ul>
+<li>单精度浮点型能表示的数据范围：
+<ul>
+<li>在表示负数时： -3.402823E38 ~ -1.401298E-45</li>
+<li>在表示正数时： 1.401298E-45 ~ 3.402823E38</li>
+</ul>
+</li>
+<li>双精度浮点型能表示的数据范围：
+<ul>
+<li>在表示负数时： -1.79769313486231E308 ~ -4.94065645841247E-324</li>
+<li>在表示正数时： 4.94065645841247E-324 ~ 1.79769313486231E308</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 单精度数据声明</span><br><span class="line">Dim a as Single</span><br><span class="line">Dim b!</span><br><span class="line">&#x27; 双精度数据声明</span><br><span class="line">Dim c as Double </span><br><span class="line">Dim d#</span><br></pre></td></tr></table></figure>
+<p>总结：它们可以表示非常大的数据，但要注意的时，<strong>单精度浮点型其精度是6</strong>，即只能保存<strong>小数点后最多6位</strong>的数据；<strong>双精度浮点型其精度是14</strong>，即只能保存<strong>小数点后最多14位</strong>的数据。如果超出以上长度，则<strong>超出部分会被去掉，并且会自动四舍五入</strong>。</p>
+<hr>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">Dim i1 As Single</span><br><span class="line">Dim i2 As Double</span><br><span class="line">i1 = 3.141592672</span><br><span class="line">i2 = 3.12517237237127</span><br><span class="line">Debug.Print i1</span><br><span class="line">Debug.Print i2</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E5%B0%8F%E6%95%B0.png" alt></p>
+<p>运行可以看到作为单精度浮点数的<code>i1</code>在输出时变成了<code>3.141593</code>。</p>
+<p><em>TIPS:如果试图在给变量赋值时直接写到小数点后 15 位，<code>VBE</code>是会自动检测到并且直接进行四舍五入只保留<code>14位</code>的。上图<code>i2</code>我本想赋值为<code>3.125172372371268</code>，但写完最后的 8 之后，它自动消失了并且前面的 6 变成了 7 。</em></p>
+<blockquote>
+<p>因为在数字的表示范围上长整数大于整数，而双精度浮点型大于单精度浮点型，理论上来说，如果把变量定义为表示范围更大的数据类型可以更好地避免掉数据溢出的问题。但在定义变量时，应当遵守的一个原则就是：<strong>够用就好。而不是越大越好</strong>。所以通常如果整数和单精度浮点型就足以表示数据的话，应当使用它们而不是长整数和双精度浮点型。</p>
+</blockquote>
+<hr>
+<h3 id="1-3-时间型">1.3. 时间型</h3>
+<blockquote>
+<p>日期型数据不仅可以表示日期，还可以表示时间。</p>
+<p>可以表示的日期范围是：<strong>100年1月1日 ~ 9999年12月31日</strong>；</p>
+<p>可以表示的时间范围是：<strong>0:00:00 ~ 23.59.59</strong>。</p>
+</blockquote>
+<blockquote>
+<p>任何可识别文字数据值都可以分配给 <strong>Date</strong> 变量。 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.microsoft.com/zh-cn/office/vba/language/glossary/vbe-glossary#date-literal">日期文字</a> 必须包含在数字符号 <strong>#</strong> () ，例如 或 <code>#January 1, 1993#</code> <code>#1 Jan 93#</code> 。</p>
+<p><strong>Date</strong> 变量根据计算机识别的短日期格式显示日期。</p>
+<p>时间显示基于计算机识别的时间格式（12 小时或 24 小时）。当其他数值类型转换为 <strong>Date</strong> 时，小数左侧的值表示日期信息，小数右边的值表示时间。 午夜用 0 表示，中午用 0.5 表示。</p>
+<p>负整数表示 1899 年 12 月 30 日之前的日期。</p>
+</blockquote>
+<hr>
+<h4 id="1-3-1-返回当前日期时间">1.3.1 返回当前日期时间</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Debug.Print Date  &#x27; 查询当前年月日；</span><br><span class="line">    Debug.Print Time  &#x27; 查询当前时分秒；</span><br><span class="line">    Debug.Print Now	  &#x27; 查询当前时间戳；</span><br><span class="line">    Debug.Print Timer &#x27; 查询0点到当前时间的秒数，用来计算时间差；</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E6%97%B6%E9%97%B4.png" alt></p>
+<hr>
+<h4 id="1-3-2-时间日期设定">1.3.2 时间日期设定</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Debug.Print DateSerial(2021, 12, 12) 	&#x27; 年月日格式化</span><br><span class="line">    Debug.Print TimeSerial(15, 12, 12)		&#x27; 时分秒格式化</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E6%97%B6%E9%97%B4%E5%9B%9B.png" alt></p>
+<hr>
+<h4 id="1-3-3-格式化日期">1.3.3 格式化日期</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Debug.Print Format(Now, &quot;aaa&quot;)</span><br><span class="line">    Debug.Print Format(Now, &quot;aaaa&quot;)</span><br><span class="line">    Debug.Print Format(Now, &quot;ddd&quot;)</span><br><span class="line">    Debug.Print Format(Now, &quot;dddd&quot;)</span><br><span class="line">    Debug.Print Format(Now, &quot;yy-mm-dd&quot;)</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E4%BA%8C.png" alt></p>
+<hr>
+<h4 id="1-3-4-获取时间的部分">1.3.4 获取时间的部分</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Debug.Print Year(Now)   &#x27; 获取日期的年份</span><br><span class="line">    Debug.Print Month(Now)	&#x27; 获取日期的月份</span><br><span class="line">    Debug.Print Day(Now)	&#x27; 获取日期所在日</span><br><span class="line">    Debug.Print Hour(Now)	&#x27; 获取日期的小时</span><br><span class="line">    Debug.Print Minute(Now)	&#x27; 获取日期的分钟</span><br><span class="line">    Debug.Print Second(Now)	&#x27; 获取日期的秒数</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E4%B8%89.png" alt></p>
+<hr>
+<h4 id="1-3-5-日期间隔">1.3.5 日期间隔</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Dim a, b As Date</span><br><span class="line">    a = #12/12/2020#</span><br><span class="line">    b = &quot;2020-12-31&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; (b - a) &amp; &quot;天&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;d&quot;, a, b) &amp; &quot;天&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;q&quot;, a, b) &amp; &quot;季&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;w&quot;, a, b) &amp; &quot;周&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;h&quot;, a, b) &amp; &quot;时&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;n&quot;, a, b) &amp; &quot;分&quot;</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E4%BA%94.png" alt></p>
+<hr>
+<h4 id="1-3-6-日期加减">1.3.6 日期加减</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Dim a As Date</span><br><span class="line">    a = #12/12/2020#</span><br><span class="line">    Debug.Print &quot;加一季：&quot; &amp; DateAdd(&quot;q&quot;, 1, a)</span><br><span class="line">    Debug.Print &quot;加一月：&quot; &amp; DateAdd(&quot;m&quot;, 1, a)</span><br><span class="line">    Debug.Print &quot;加一天：&quot; &amp; DateAdd(&quot;d&quot;, 1, a)</span><br><span class="line">    Debug.Print &quot;加一时：&quot; &amp; DateAdd(&quot;h&quot;, 1, a)</span><br><span class="line">    Debug.Print &quot;加120分：&quot; &amp; DateAdd(&quot;n&quot;, 120, a)</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出:</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E5%85%AD.png" alt></p>
+<hr>
+<h3 id="1-4-布尔型">1.4.布尔型</h3>
+<p>布尔类型：boolean  <code>布尔型数据用于表示逻辑值：真、假；真为 true，假为 false;常用于条件判断</code>；</p>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Dim a, b As Integer</span><br><span class="line">    Dim c, d As Boolean</span><br><span class="line">    a = 0</span><br><span class="line">    b = 12</span><br><span class="line">    c = True</span><br><span class="line">    d = False</span><br><span class="line">    Debug.Print CBool(a) &amp; &quot; &quot; &amp; CBool(b) 	&#x27; 数值a,b转换为布尔型</span><br><span class="line">    Debug.Print CInt(c) &amp; &quot; &quot; &amp; CInt(d)		&#x27; 布尔c,d转换为数值型</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">&#x27; 应当注意的是，当其它数据类型转换为布尔值时，0会转成False，其它值则变成True。当把布尔值转换成其他数据类型时(不包括字符型，转为字符型不变)，False会转换为0，True则是-1。</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png" alt></p>
+<hr>
+<h3 id="1-5-变体型">1.5. 变体型</h3>
+<p>变体型：variant</p>
+<ul>
+<li>变体型数据是一种特殊的数据类型，几乎可以用于保存所有其它数据类型的数据。可以简单地理解为：当不知道变量所要表示的数据是什么类型时，就把它定义为Variant（但这种操作应当<strong>尽量避免</strong>）。</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">	Dim t As Variant</span><br><span class="line">	t = &quot;hello&quot;</span><br><span class="line">	Debug.Print t</span><br><span class="line">	t = 123.45</span><br><span class="line">	Debug.Print t</span><br><span class="line">end Sub</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1-6-对象型">1.6. 对象型</h3>
+<p>对象型：object 【在Excel中指的是：工作簿、工作表、单元格、图表和透视表等】</p>
+<ul>
+<li>对象型是VBA中另一种特殊的数据类型。有点类似于其它高级编程语言中的&quot;对象&quot;，因为它们都有自己的属性与方法，但也仅限于在这两个方面上类似。</li>
+</ul>
+<p>常见代码操作Excel中的对象:</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 1.工作簿(Workbooks)</span><br><span class="line">	&#x27; Workbooks(N) 第N个工作簿</span><br><span class="line">	&#x27; Workbooks(&quot;工作簿名&quot;)</span><br><span class="line">	&#x27; ActiveWorkbook 活动工作簿</span><br><span class="line">	&#x27; ThisWorkBook 代码所在工作簿</span><br><span class="line">&#x27; ---------------------------------</span><br><span class="line">&#x27; 2.工作表(WorkSheets)</span><br><span class="line">	&#x27; Sheets(N) 第N个工作表</span><br><span class="line">	&#x27; Sheets(&quot;工作表名&quot;)</span><br><span class="line">	&#x27; SheetsN 第N个工作表</span><br><span class="line">	&#x27; ActiveSheet 活动工作表</span><br><span class="line">	&#x27; WorkSheets 与 Sheets的区别</span><br><span class="line">&#x27; ----------------------------------															</span><br><span class="line">&#x27; 3.单元格(cells)</span><br><span class="line">	&#x27; Range(&quot;单元格地址&quot;)</span><br><span class="line">	&#x27; Cells(行号,列号)</span><br><span class="line">	&#x27; [A1] 单元格简写</span><br><span class="line">	&#x27; ActiveCell活动单元格</span><br><span class="line">	&#x27; Selection 当前被选取的区域</span><br></pre></td></tr></table></figure>
+<p>对象型详见 [Excel VBA学习——Excel对象操作](./Excel VBA学习——<a target="_blank" rel="noopener external nofollow noreferrer" href="http://xn--y5q338n.md">入门.md</a>)</p>
+<hr>
+<h3 id="1-7-枚举型">1.7. 枚举型</h3>
+<p>当一个变量只有几种可能的值时，可以定义为枚举类型。枚举就是将变量的值逐一列出，属于该枚举型的变量只能取列举的某一个值。</p>
+<p>枚举型数据定义格式如下：</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Public | Private Enum 变量名</span><br><span class="line">    成员1 [= 常数表达式1]</span><br><span class="line">    成员2 [= 常数表达式2]</span><br><span class="line">    ……</span><br><span class="line">End Enum</span><br><span class="line">&#x27; -----------------------------------------------------------------------------------</span><br><span class="line">&#x27; Public和Private用于定义变量的作用域(即变量的有效范围)；</span><br><span class="line">&#x27; 用中括号[]括起来的部分是可以省略的，如果省略的话，则默认以0表示第一个成员，1表示第2个成员，以此类推；</span><br></pre></td></tr></table></figure>
+<hr>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Public Enum WorkDays</span><br><span class="line">    星期日</span><br><span class="line">    星期一</span><br><span class="line">    星期二</span><br><span class="line">    星期三</span><br><span class="line">    星期四</span><br><span class="line">    星期五</span><br><span class="line">    星期六</span><br><span class="line">End Enum</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%9E%9A%E4%B8%BE.png" alt></p>
+<hr>
+<h2 id="二、数据类型转换">二、数据类型转换</h2>
+<h3 id="2-1-类型转换函数">2.1 类型转换函数</h3>
+<h4 id="2-1-1-CStr">2.1.1 CStr</h4>
+<p>CStr：可强制将一个表达式转换成字符串，返回代表一数值的字符串 Variant (String)；</p>
+<hr>
+<p>语法： <code>CStr(expression)</code></p>
+<blockquote>
+<p>如果 expression 为 CStr 返回：</p>
+<ul>
+<li>Boolean 字符串，包含 True 或 False；</li>
+<li>Date 字符串，包含系统的短日期格式日期；</li>
+<li>Null 运行时错误；Empty 零长度字符串 (“”)；</li>
+<li>Error 字符串，包含跟随有错误号码的单词 ;</li>
+<li>Error；其他数值字符串，包含此数字的字符串；</li>
+</ul>
+</blockquote>
+<hr>
+<p>CStr() 和 Str() 的区别：</p>
+<ul>
+<li>Str() 把数字转换成为字符号，前面会带有数值的符号，因此，会多出一个前导的空格;</li>
+</ul>
+<blockquote>
+<p>e.g. ： Len(Str(99999))，返回的结果为6，而Len(CStr(99999))返回的结果只为5。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-2-CBool">2.1.2 CBool</h4>
+<p>CBool：转换为 Boolean(布尔类型)子类型的 Variant(变量)；</p>
+<p>语法： <code>CBool(expression)</code></p>
+<blockquote>
+<p>将其他 数值类型]转换为 <strong>布尔</strong> 值时，0 将变为 <strong>False</strong>，所有其他值均变为 <strong>True</strong>。</p>
+<p>将 <strong>布尔</strong> 值转换为其他 数据类型时，<strong>False</strong> 将变为 0，<strong>True</strong> 将变为 -1。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-3-CByte">2.1.3  CByte</h4>
+<p>CByte：转换为 Byte(字节类型)子类型的 Variant；</p>
+<p>语法：<code>CByte(expression)</code></p>
+<blockquote>
+<p>CByte 函数用于进行从其他数据类型到 Byte 子类型的的国际公认的格式转换。</p>
+<p>如果 expression 在 Byte 子类型可接受的范围之外，则发生错误。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-4-CInt">2.1.4 CInt</h4>
+<p>CInt：转换为 Integer 子类型的 Variant；</p>
+<p>语法：<code>CInt(expression)</code></p>
+<blockquote>
+<p>CInt 函数用于进行从其他数据类型到 Integer 子类型的国际公认的格式转换。</p>
+<p>如果 expression 在 Integer 子类型可接受的范围之外，则发生错误。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-5-CLng">2.1.5 CLng</h4>
+<p>CLng：转换为 Long 子类型的 Variant；</p>
+<p>语法：<code>CLng(expression)</code></p>
+<blockquote>
+<p>CLng 函数用于进行从其他数据类型到 Long子类型的国际公认的格式转换。</p>
+<p>如果 expression 在 Long子类型可接受的范围之外，则发生错误。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-6-CSng">2.1.6 CSng</h4>
+<p>CSng：转换为 Single 子类型的 Variant；</p>
+<p>语法：<code>CSng(expression)</code></p>
+<blockquote>
+<p>CSng 函数用于进行从其他数据类型到 Single 子类型的国际公认的格式转换。</p>
+<p>如果 expression 在 Single 子类型允许的范围之外，则发生错误。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-7-CDbl">2.1.7 CDbl</h4>
+<p>CDbl：换为 Double 子类型的 Variant;</p>
+<p>语法：<code>CDbl(expression)</code></p>
+<blockquote>
+<p>CDbl 函数用于进行从其他数据类型到 Double 子类型的国际公认的格式转换。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-8-CCur">2.1.8 CCur</h4>
+<p>CCur：转换为 Currency 子类型的 Variant；</p>
+<p>语法：<code>CCur(expression)</code>；</p>
+<blockquote>
+<p>CCur 函数用于进行从其他数据类型到 Currency 子类型的国际公认的格式转换。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-9-CDate">2.1.9 CDate</h4>
+<p>CDate：转换为 Date 子类型的 Variant；<br>
+语法：<code>CDate(date)</code> [date 参数是任意有效的日期表达式]</p>
+<blockquote>
+<p>CDate 识别日期文字和时间文字，以及一些在可接受的日期范围内的数字。在将数字转换为日期时，数字的整数部分被转换为日期，分数部分被转换为从午夜开始计算的时间。</p>
+<p>CDate 根据系统的区域设置识别日期格式。如果数据的格式不能被日期设置识别，则不能判断年、月、日的正确顺序。另外，如果长日期格式包含表示星期几的字符串，则不能被识别。</p>
+</blockquote>
+<hr>
+<h3 id="2-2-Format函数">2.2 Format函数</h3>
+<p>Format：格式化数字和文本的，基本和excel里面的format是一样的作用；</p>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Dim a As Integer</span><br><span class="line">    a = 123</span><br><span class="line">    Dim b</span><br><span class="line">    b = 12304</span><br><span class="line">    Debug.Print Format(a, &quot;0000.00&quot;)</span><br><span class="line">    Debug.Print Format(a, &quot;\价格\ 0000.00&quot;)</span><br><span class="line">    Debug.Print Format(b, &quot;yyyy-mm-dd&quot;)   	&#x27; 这里计算是从1900-01-01加上b的得到的日期</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参考资源：</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.cnblogs.com/wuzhiblog/p/vba_one.html" rel="external nofollow noreferrer" target="_blank"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cnblogs.com/wuzhiblog/p/vba_one.html">Excel VBA入门（一）数据类型</a></a></td>
+</tr>
+<tr>
+<td><a href="https://blog.csdn.net/adolphe/article/details/5804804" rel="external nofollow noreferrer" target="_blank">Excel VBA 类型转换函数</a></td>
+</tr>
+<tr>
+<td><a href="https://blog.csdn.net/stanwuc/article/details/105411081" rel="external nofollow noreferrer" target="_blank">Excel VBA（07）数据类型和转换</a></td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/zh-cn/office/vba/language/reference/user-interface-help/data-type-summary" rel="external nofollow noreferrer" target="_blank">Microsoft Office VBA参考</a></td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Curry 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="Curry 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Curry
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wsjslient.github.io/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="Excel VBA学习——数据类型">https://wsjslient.github.io/2022/01/18/Excel-VBA学习——数据类型/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Excel/" rel="tag"><i class="fas fa-tags"></i> Excel</a>
+              <a href="/tags/VBA/" rel="tag"><i class="fas fa-tags"></i> VBA</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/" rel="prev" title="Excel VBA学习——入门">
+                  <i class="fa fa-chevron-left"></i> Excel VBA学习——入门
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84%E5%92%8C%E5%AD%97%E5%85%B8/" rel="next" title="Excel VBA学习——数组和字典">
+                  Excel VBA学习——数组和字典 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Curry</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数：<span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fas fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量：<span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">17k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">16 分钟</span>
+  </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#fff',
+  buttonColorLight: '#100f2c',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"wsjslient","repo":"github-comments","client_id":"3cf2d7cacd8911eb09e0","client_secret":"e91d4a79981f54bc76c73a2e6300c01cb2225b9a","admin_user":"wsjslient","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"4197c609d2e7988b36afacf965b32c50"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+<link rel="stylesheet" href="[object Object]">
+
+<script>
+  NexT.utils.getScript('[object Object]', () => {
+    var gitalk = new Gitalk({
+      clientID: '3cf2d7cacd8911eb09e0',
+      clientSecret: 'e91d4a79981f54bc76c73a2e6300c01cb2225b9a',
+      repo: 'github-comments',
+      owner: 'wsjslient',
+      admin: ['wsjslient'],
+      id: '4197c609d2e7988b36afacf965b32c50',
+        language: 'zh-CN',
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+  
+  
+
+  
+   <script type="text/javascript" src="/js/src/explosion.js"></script>
+  
+
+   
+
+<script>
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:2472294,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+
+ 
+
+<script>
+  var OriginTitile = document.title;
+  var titleTime;
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.title = "(つェ⊂)我藏好了哦~" + OriginTitile;
+      clearTimeout(titleTime);
+    } else {
+      document.title = "(*´∇｀*) 被你发现啦~" + OriginTitile;
+      titleTime = setTimeout(function() {
+        document.title = OriginTitile;
+      }, 2000);
+    }
+  });
+</script>
+
+
+   
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+<script>
+  function timer() {
+    var ages = moment.preciseDiff(moment(),moment(20210621,"YYYYMMDD"));
+    ages = ages.replace(/years?/, "年");
+    ages = ages.replace(/months?/, "月");
+    ages = ages.replace(/days?/, "天");
+    ages = ages.replace(/hours?/, "小时");
+    ages = ages.replace(/minutes?/, "分");
+    ages = ages.replace(/seconds?/, "秒");
+    ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+    div.innerHTML = `运行时间 ${ages}`;
+  }
+  var div = document.createElement("div");
+  //插入到copyright之后
+  var copyright = document.querySelector(".copyright");
+  document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+  timer();
+  setInterval("timer()",1000)
+</script>
+
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false; 
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+</body>
+</html>

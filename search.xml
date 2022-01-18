@@ -27,6 +27,612 @@
       </tags>
   </entry>
   <entry>
+    <title>Excel VBA学习——数组和字典</title>
+    <url>/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E7%BB%84%E5%92%8C%E5%AD%97%E5%85%B8/</url>
+    <content><![CDATA[<h1>Excel VBA学习——数组和字典</h1>
+<h2 id="前言">前言</h2>
+<blockquote>
+<p>数组和字典也是VBA的常用到数据类型之一。</p>
+<p>事实上，字典不是VBA内置的类型，它是Windows脚本语言的。但其实字典在VBA中也是非常重要的，它非常适用于需要进行非重复性数据的操作。</p>
+</blockquote>
+<hr>
+<span id="more"></span>
+<h2 id="一、数组">一、数组</h2>
+<p>数组：</p>
+<ul>
+<li>多个变量的集合，而且它是有顺序的，通过索引来访问一个数组中的各个值；</li>
+<li><strong>数组中的各个数据，它们的类型必须是相同的。</strong></li>
+</ul>
+<h3 id="1-1-静态数组">1.1 静态数组</h3>
+<p>所谓静态数组，即它的长度是固定不可变的。</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 其中a和b均为数字，表示数据的索引起始值；</span><br><span class="line">&#x27; 也可以只写一个数字，则此时数组使用默认索引，从1开始，数字表示它的长度；</span><br><span class="line">Dim 数组名(a to b) As 数据类型</span><br><span class="line">&#x27; -----------------------------------------------------------</span><br><span class="line">Dim array1(10) As String</span><br><span class="line">Dim array2(10 to 20) As String</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1-2-动态数组">1.2 动态数组</h3>
+<p>如果在定义时并不知道需要使用的数组的长度是多少，则可以定义它为动态数组：</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 定义动态数组，只需要在括号里面留空就行了</span><br><span class="line">&#x27; 待确定了数组的长度之后，可以使用ReDim来重新定义数组</span><br><span class="line">Dim array3() As String</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1-3-数组的赋值与取值">1.3 数组的赋值与取值</h3>
+<p>通过索引来对数组进行赋值，VBA中不是使用中括号<code>[]</code>而是使用小括号<code>()</code>进行的。</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Dim arr(5) As String</span><br><span class="line"></span><br><span class="line">For i = 1 to 5</span><br><span class="line">     &#x27;赋值</span><br><span class="line">     arr(i) = i</span><br><span class="line">Next</span><br><span class="line"></span><br><span class="line">&#x27;取值</span><br><span class="line">Debug.Print arr(1)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>此外，也可以直接把Excel单元格中的数据赋值给数组。</p>
+<p>如上面定义的长度为5的一维数组，可以以以下方式把单元格中A1到A5的数据分别载入到数组arr中：</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">arr = Range(&quot;A1:A5&quot;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1-4-多维数组">1.4 多维数组</h3>
+<p>顾名思义，多个维度的数组；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 定义一个四行五列的二维数组：</span><br><span class="line">Dim arr(4, 5) as String</span><br><span class="line">&#x27; or</span><br><span class="line">Dim arr(1 to 4, 5 to 8) As String</span><br><span class="line">&#x27; -----------------------------------</span><br><span class="line">&#x27; 定义一个三维数组：</span><br><span class="line">Dim arr(3, 4, 5) As String</span><br><span class="line">&#x27; or</span><br><span class="line">Dim Myarr(1 to 3, 4 to 6, 7 to 9) As String</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="二、字典">二、字典</h2>
+<p>字典其实就是一些&quot;键－值&quot;对。在很多场合，它都能起到很大的作用，使用起来非常方便，有类似于微型数据库的作用，可用于临时保存一些数据信息。</p>
+<h3 id="2-1-创建字典">2.1 创建字典</h3>
+<p>VBA中创建字典有两种方法:</p>
+<h4 id="2-1-1-引用声明">2.1.1 引用声明</h4>
+<p>在VBE菜单中，选择“工具–&gt;引用”，在弹出的对话框中选择中边的“浏览”，此时会打开Windows系统的驱动目录(C:\Windows\System32)，点击浏览，然后找到scrrun.dll，确定确定返回。添加引用后，就可以像定义其它变量一样声明使用字典了。</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Dim d As New Dictionary</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-1-2-直接创建">2.1.2 直接创建</h4>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Dim d As Object</span><br><span class="line">Set d = CreateObject(&quot;Scripting.Dictionary&quot;)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="2-2-字典的方法">2.2 字典的方法</h3>
+<h4 id="2-2-1-Add">2.2.1 Add</h4>
+<p>Add：添加内容至字典；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 第一个为键，第二个为值</span><br><span class="line">d.Add key,item</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-2-2-Exists">2.2.2 Exists</h4>
+<p>Exists：判断关键词是否在字典(的键)中;</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 如果存在，返回True，否则返回False；</span><br><span class="line">&#x27; 通常会在向字典中添加条目的时候使用，即先判断字典中是否已存在这个记录，如果不存在则新增，否则进行其它的操作；</span><br><span class="line">d.Exists(key)</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-2-3-Keys">2.2.3 Keys</h4>
+<p>Keys：获取字典所有的键，返回类型为数组类型；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">d.Keys()</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-2-4-Items">2.2.4 Items</h4>
+<p>Items：获取字典所有的值，回类型为数组类型；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">d.Items()</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-2-5-Remove">2.2.5 Remove</h4>
+<p>Remove：通过key来移除字典的键值对；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 如果指定的键不存在，会发生错误</span><br><span class="line">d.Remove(key)</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-2-6-RemoveAll">2.2.6 RemoveAll</h4>
+<p>RemoveAll：清空字典内容；</p>
+<hr>
+<h3 id="2-3-字典的属性">2.3 字典的属性</h3>
+<h4 id="2-3-1-Count">2.3.1 Count</h4>
+<p>Count：统计字段的键值对数量；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">d.Count</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-3-2-Key">2.3.2 Key</h4>
+<p>Key：用于更改字典中已有的键；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">d.Key(&quot;apple&quot;) = &quot;Orange&quot; </span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-3-3-Item">2.3.3 Item</h4>
+<p>Item：用于写入或读取字典中指定键的值，如果指定的键不存在，则会新增；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27;读取</span><br><span class="line">Debug.Print d.Item(&quot;apple&quot;)</span><br><span class="line">&#x27;----------------------------</span><br><span class="line">&#x27;写入</span><br><span class="line">d.Item(&quot;apple&quot;) = 10</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-3-4-CompareMode">2.3.4  CompareMode</h4>
+<p>CompareMode： 用于设置或者读取字典对象中比较字符串时的比较模式；</p>
+<p><code>e.g.</code></p>
+<figure class="highlight vb"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Sub</span> test()</span><br><span class="line">   <span class="keyword">Dim</span> a <span class="keyword">As</span> <span class="type">Object</span></span><br><span class="line">   <span class="keyword">Set</span> d = CreateObject(<span class="string">&quot;scripting.dictionary&quot;</span>)</span><br><span class="line">   d.CompareMode = <span class="number">1</span></span><br><span class="line">   d.Add <span class="string">&quot;a&quot;</span>, <span class="string">&quot;123&quot;</span></span><br><span class="line">   d.Add <span class="string">&quot;A&quot;</span>, <span class="string">&quot;234&quot;</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+<p><code>输出：</code><strong>d.comparemode = 1 表示字典中的关键字是不区分大小写的，d.comparemode = 0表 示字典中的关键字是区分大小写的</strong>；</p>
+<p>如图，若d.comparemode = 1，则新增关键字’a’时，会有错误提示，表示已经存在该关键字；若d.comparemode = 0，则能增加进去，无报错提示；</p>
+<p>![](Pic/Excel VBA学习——数据类型/比较1.png)</p>
+<hr>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参考资源：</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.cnblogs.com/wuzhiblog/p/vba_two.html" target="_blank"><a href="https://www.cnblogs.com/wuzhiblog/p/vba_two.html">Excel VBA入门（二）数组和字典</a></a></td>
+</tr>
+<tr>
+<td><a href="http://www.360doc.com/content/18/0328/08/30583536_740783923.shtml" target="_blank">VBA中字典的属性和方法（二），收藏篇！</a></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>Study</category>
+        <category>VBA</category>
+      </categories>
+      <tags>
+        <tag>Excel</tag>
+        <tag>VBA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Excel VBA学习——数据类型</title>
+    <url>/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<h1>Excel VBA学习——数据类型</h1>
+<h2 id="前言">前言</h2>
+<blockquote>
+<p>与其它的编程语言一样，VBA也有它自己的数据类型。讲到数据类型，就离不开“变量”与“常量”这两个概念，变量与常量，都是用于保存数据的。顾名思义，“变量”是会变的，即它的值是可以改变的；而常量，则它的值通常是固定不变的。</p>
+</blockquote>
+<p>为什么要定义数据类型：</p>
+<ul>
+<li>定义合适的数据类型可以节省内存空间，提高程序运行的效率；</li>
+<li>便于程序进行计算（数值型）和其它使用（非数值型）；</li>
+</ul>
+<span id="more"></span>
+<h2 id="变量和常量">变量和常量</h2>
+<h3 id="a-定义变量">a. 定义变量</h3>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 变量名可以是英文字母、数字、下划线的组合，但必须以字母开头</span><br><span class="line">Dim 变量名 As 数据类型</span><br><span class="line">&#x27; -------------------------------------------------</span><br><span class="line">&#x27; 变量的赋值则直接使用一个等号进行</span><br><span class="line">Dim i as Integer</span><br><span class="line">i = 3</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="b-定义常量">b. 定义常量</h3>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Const 常量名 As 数据类型 = 常量值</span><br><span class="line">&#x27; ----------------------------</span><br><span class="line">&#x27; e.g. 如下定义一个整数常量</span><br><span class="line">Const h As Integer = 18</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="一、数据类型">一、数据类型</h2>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>存储空间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>2个字节</td>
+</tr>
+<tr>
+<td>Byte</td>
+<td>1个字节</td>
+</tr>
+<tr>
+<td>Collection</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>8个字节</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>8个字节</td>
+</tr>
+<tr>
+<td>Decimal</td>
+<td>14个字节</td>
+</tr>
+<tr>
+<td>Dictionary</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>8个字节</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>2个字节</td>
+</tr>
+<tr>
+<td>Long</td>
+<td>4个字节</td>
+</tr>
+<tr>
+<td>LongLong</td>
+<td>8个字节</td>
+</tr>
+<tr>
+<td>LongPtr</td>
+<td>32位系统：4个字节<br>64位系统：8个字节</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>Single</td>
+<td>4个字节</td>
+</tr>
+<tr>
+<td>String(可变长度)</td>
+<td>10字节+字符串长度</td>
+</tr>
+<tr>
+<td>String(定长)</td>
+<td>字符串长度</td>
+</tr>
+<tr>
+<td>Variant(带数字)</td>
+<td>16个字节</td>
+</tr>
+<tr>
+<td>Variant(带字符)</td>
+<td>22字节+字符串长度</td>
+</tr>
+<tr>
+<td>用户定义(使用Type)</td>
+<td>元素所需的数字</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>下面举例一些常用的数据类型：</code></p>
+<h3 id="1-1-字符型（字符串）">1.1 字符型（字符串）</h3>
+<p>字符型：string 	<code>字符型是用于保存文本数据的，字符型内容应放置于双引号内 &quot;&quot; </code> ;</p>
+<p>字符串符号：<code>$</code>；</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 数据声明</span><br><span class="line">Dim str1 as String </span><br><span class="line">Dim str2$</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1-2-数值型">1.2 数值型</h3>
+<h4 id="1-2-1-整数">1.2.1 整数</h4>
+<p>整数：integer【整数】、long【长整数】  currency【缩放整数】<code>表示整数</code></p>
+<p>整数符号：<code>%</code>；</p>
+<p>长整数符号：<code>&amp;</code>；</p>
+<p>缩放整数符号：<code>@</code>；</p>
+<p>整数与长整数的区别在于两者所能表示的数值范围不同：</p>
+<ul>
+<li>整数数据能表示的数据范围：-32768 ~ 32767</li>
+<li>长整数数据能表示的数据范围：-2147483648 ~ 2147483647</li>
+<li>缩放整数数据能表示的数据范围：-922,337,203,685,477.5808 到 922,337,203,685,477.5807</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 整数数据声明</span><br><span class="line">Dim a as Interger</span><br><span class="line">Dim b%</span><br><span class="line">&#x27; 长整数数据声明</span><br><span class="line">Dim c as Long</span><br><span class="line">Dim d&amp;</span><br><span class="line">&#x27; 缩放整数声明</span><br><span class="line">Dim e as Currency</span><br><span class="line">Dim f@</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>补充：还有byte【字节】、longlong【整数的一种，只在64位平台上生效】</p>
+</blockquote>
+<hr>
+<h4 id="1-2-2浮点数">1.2.2浮点数</h4>
+<p>浮点型：single【单精度浮点型】、double【双精度浮点型】  <code>表示小数</code></p>
+<p>单精度符号：<code>!</code>；</p>
+<p>双精度符号：<code>#</code>；</p>
+<p><strong>单精度浮点数与双精度浮点数除了在数值范围不同之外，两者所能表示的数据精度（即小数点后多少位）也是不同的；</strong></p>
+<ul>
+<li>单精度浮点型能表示的数据范围：
+<ul>
+<li>在表示负数时： -3.402823E38 ~ -1.401298E-45</li>
+<li>在表示正数时： 1.401298E-45 ~ 3.402823E38</li>
+</ul>
+</li>
+<li>双精度浮点型能表示的数据范围：
+<ul>
+<li>在表示负数时： -1.79769313486231E308 ~ -4.94065645841247E-324</li>
+<li>在表示正数时： 4.94065645841247E-324 ~ 1.79769313486231E308</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 单精度数据声明</span><br><span class="line">Dim a as Single</span><br><span class="line">Dim b!</span><br><span class="line">&#x27; 双精度数据声明</span><br><span class="line">Dim c as Double </span><br><span class="line">Dim d#</span><br></pre></td></tr></table></figure>
+<p>总结：它们可以表示非常大的数据，但要注意的时，<strong>单精度浮点型其精度是6</strong>，即只能保存<strong>小数点后最多6位</strong>的数据；<strong>双精度浮点型其精度是14</strong>，即只能保存<strong>小数点后最多14位</strong>的数据。如果超出以上长度，则<strong>超出部分会被去掉，并且会自动四舍五入</strong>。</p>
+<hr>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">Dim i1 As Single</span><br><span class="line">Dim i2 As Double</span><br><span class="line">i1 = 3.141592672</span><br><span class="line">i2 = 3.12517237237127</span><br><span class="line">Debug.Print i1</span><br><span class="line">Debug.Print i2</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E5%B0%8F%E6%95%B0.png" alt></p>
+<p>运行可以看到作为单精度浮点数的<code>i1</code>在输出时变成了<code>3.141593</code>。</p>
+<p><em>TIPS:如果试图在给变量赋值时直接写到小数点后 15 位，<code>VBE</code>是会自动检测到并且直接进行四舍五入只保留<code>14位</code>的。上图<code>i2</code>我本想赋值为<code>3.125172372371268</code>，但写完最后的 8 之后，它自动消失了并且前面的 6 变成了 7 。</em></p>
+<blockquote>
+<p>因为在数字的表示范围上长整数大于整数，而双精度浮点型大于单精度浮点型，理论上来说，如果把变量定义为表示范围更大的数据类型可以更好地避免掉数据溢出的问题。但在定义变量时，应当遵守的一个原则就是：<strong>够用就好。而不是越大越好</strong>。所以通常如果整数和单精度浮点型就足以表示数据的话，应当使用它们而不是长整数和双精度浮点型。</p>
+</blockquote>
+<hr>
+<h3 id="1-3-时间型">1.3. 时间型</h3>
+<blockquote>
+<p>日期型数据不仅可以表示日期，还可以表示时间。</p>
+<p>可以表示的日期范围是：<strong>100年1月1日 ~ 9999年12月31日</strong>；</p>
+<p>可以表示的时间范围是：<strong>0:00:00 ~ 23.59.59</strong>。</p>
+</blockquote>
+<blockquote>
+<p>任何可识别文字数据值都可以分配给 <strong>Date</strong> 变量。 <a href="https://docs.microsoft.com/zh-cn/office/vba/language/glossary/vbe-glossary#date-literal">日期文字</a> 必须包含在数字符号 <strong>#</strong> () ，例如 或 <code>#January 1, 1993#</code> <code>#1 Jan 93#</code> 。</p>
+<p><strong>Date</strong> 变量根据计算机识别的短日期格式显示日期。</p>
+<p>时间显示基于计算机识别的时间格式（12 小时或 24 小时）。当其他数值类型转换为 <strong>Date</strong> 时，小数左侧的值表示日期信息，小数右边的值表示时间。 午夜用 0 表示，中午用 0.5 表示。</p>
+<p>负整数表示 1899 年 12 月 30 日之前的日期。</p>
+</blockquote>
+<hr>
+<h4 id="1-3-1-返回当前日期时间">1.3.1 返回当前日期时间</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Debug.Print Date  &#x27; 查询当前年月日；</span><br><span class="line">    Debug.Print Time  &#x27; 查询当前时分秒；</span><br><span class="line">    Debug.Print Now	  &#x27; 查询当前时间戳；</span><br><span class="line">    Debug.Print Timer &#x27; 查询0点到当前时间的秒数，用来计算时间差；</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E6%97%B6%E9%97%B4.png" alt></p>
+<hr>
+<h4 id="1-3-2-时间日期设定">1.3.2 时间日期设定</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Debug.Print DateSerial(2021, 12, 12) 	&#x27; 年月日格式化</span><br><span class="line">    Debug.Print TimeSerial(15, 12, 12)		&#x27; 时分秒格式化</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%5C%E6%97%B6%E9%97%B4%E5%9B%9B.png" alt></p>
+<hr>
+<h4 id="1-3-3-格式化日期">1.3.3 格式化日期</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Debug.Print Format(Now, &quot;aaa&quot;)</span><br><span class="line">    Debug.Print Format(Now, &quot;aaaa&quot;)</span><br><span class="line">    Debug.Print Format(Now, &quot;ddd&quot;)</span><br><span class="line">    Debug.Print Format(Now, &quot;dddd&quot;)</span><br><span class="line">    Debug.Print Format(Now, &quot;yy-mm-dd&quot;)</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E4%BA%8C.png" alt></p>
+<hr>
+<h4 id="1-3-4-获取时间的部分">1.3.4 获取时间的部分</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Debug.Print Year(Now)   &#x27; 获取日期的年份</span><br><span class="line">    Debug.Print Month(Now)	&#x27; 获取日期的月份</span><br><span class="line">    Debug.Print Day(Now)	&#x27; 获取日期所在日</span><br><span class="line">    Debug.Print Hour(Now)	&#x27; 获取日期的小时</span><br><span class="line">    Debug.Print Minute(Now)	&#x27; 获取日期的分钟</span><br><span class="line">    Debug.Print Second(Now)	&#x27; 获取日期的秒数</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E4%B8%89.png" alt></p>
+<hr>
+<h4 id="1-3-5-日期间隔">1.3.5 日期间隔</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Dim a, b As Date</span><br><span class="line">    a = #12/12/2020#</span><br><span class="line">    b = &quot;2020-12-31&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; (b - a) &amp; &quot;天&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;d&quot;, a, b) &amp; &quot;天&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;q&quot;, a, b) &amp; &quot;季&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;w&quot;, a, b) &amp; &quot;周&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;h&quot;, a, b) &amp; &quot;时&quot;</span><br><span class="line">    Debug.Print &quot;相隔&quot; &amp; DateDiff(&quot;n&quot;, a, b) &amp; &quot;分&quot;</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E4%BA%94.png" alt></p>
+<hr>
+<h4 id="1-3-6-日期加减">1.3.6 日期加减</h4>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Dim a As Date</span><br><span class="line">    a = #12/12/2020#</span><br><span class="line">    Debug.Print &quot;加一季：&quot; &amp; DateAdd(&quot;q&quot;, 1, a)</span><br><span class="line">    Debug.Print &quot;加一月：&quot; &amp; DateAdd(&quot;m&quot;, 1, a)</span><br><span class="line">    Debug.Print &quot;加一天：&quot; &amp; DateAdd(&quot;d&quot;, 1, a)</span><br><span class="line">    Debug.Print &quot;加一时：&quot; &amp; DateAdd(&quot;h&quot;, 1, a)</span><br><span class="line">    Debug.Print &quot;加120分：&quot; &amp; DateAdd(&quot;n&quot;, 120, a)</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><code>输出:</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%97%B6%E9%97%B4%E5%85%AD.png" alt></p>
+<hr>
+<h3 id="1-4-布尔型">1.4.布尔型</h3>
+<p>布尔类型：boolean  <code>布尔型数据用于表示逻辑值：真、假；真为 true，假为 false;常用于条件判断</code>；</p>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Dim a, b As Integer</span><br><span class="line">    Dim c, d As Boolean</span><br><span class="line">    a = 0</span><br><span class="line">    b = 12</span><br><span class="line">    c = True</span><br><span class="line">    d = False</span><br><span class="line">    Debug.Print CBool(a) &amp; &quot; &quot; &amp; CBool(b) 	&#x27; 数值a,b转换为布尔型</span><br><span class="line">    Debug.Print CInt(c) &amp; &quot; &quot; &amp; CInt(d)		&#x27; 布尔c,d转换为数值型</span><br><span class="line">End Sub</span><br><span class="line"></span><br><span class="line">&#x27; 应当注意的是，当其它数据类型转换为布尔值时，0会转成False，其它值则变成True。当把布尔值转换成其他数据类型时(不包括字符型，转为字符型不变)，False会转换为0，True则是-1。</span><br></pre></td></tr></table></figure>
+<p><code>输出：</code></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png" alt></p>
+<hr>
+<h3 id="1-5-变体型">1.5. 变体型</h3>
+<p>变体型：variant</p>
+<ul>
+<li>变体型数据是一种特殊的数据类型，几乎可以用于保存所有其它数据类型的数据。可以简单地理解为：当不知道变量所要表示的数据是什么类型时，就把它定义为Variant（但这种操作应当<strong>尽量避免</strong>）。</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">	Dim t As Variant</span><br><span class="line">	t = &quot;hello&quot;</span><br><span class="line">	Debug.Print t</span><br><span class="line">	t = 123.45</span><br><span class="line">	Debug.Print t</span><br><span class="line">end Sub</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1-6-对象型">1.6. 对象型</h3>
+<p>对象型：object 【在Excel中指的是：工作簿、工作表、单元格、图表和透视表等】</p>
+<ul>
+<li>对象型是VBA中另一种特殊的数据类型。有点类似于其它高级编程语言中的&quot;对象&quot;，因为它们都有自己的属性与方法，但也仅限于在这两个方面上类似。</li>
+</ul>
+<p>常见代码操作Excel中的对象:</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">&#x27; 1.工作簿(Workbooks)</span><br><span class="line">	&#x27; Workbooks(N) 第N个工作簿</span><br><span class="line">	&#x27; Workbooks(&quot;工作簿名&quot;)</span><br><span class="line">	&#x27; ActiveWorkbook 活动工作簿</span><br><span class="line">	&#x27; ThisWorkBook 代码所在工作簿</span><br><span class="line">&#x27; ---------------------------------</span><br><span class="line">&#x27; 2.工作表(WorkSheets)</span><br><span class="line">	&#x27; Sheets(N) 第N个工作表</span><br><span class="line">	&#x27; Sheets(&quot;工作表名&quot;)</span><br><span class="line">	&#x27; SheetsN 第N个工作表</span><br><span class="line">	&#x27; ActiveSheet 活动工作表</span><br><span class="line">	&#x27; WorkSheets 与 Sheets的区别</span><br><span class="line">&#x27; ----------------------------------															</span><br><span class="line">&#x27; 3.单元格(cells)</span><br><span class="line">	&#x27; Range(&quot;单元格地址&quot;)</span><br><span class="line">	&#x27; Cells(行号,列号)</span><br><span class="line">	&#x27; [A1] 单元格简写</span><br><span class="line">	&#x27; ActiveCell活动单元格</span><br><span class="line">	&#x27; Selection 当前被选取的区域</span><br></pre></td></tr></table></figure>
+<p>对象型详见 [Excel VBA学习——Excel对象操作](./Excel VBA学习——<a href="http://xn--y5q338n.md">入门.md</a>)</p>
+<hr>
+<h3 id="1-7-枚举型">1.7. 枚举型</h3>
+<p>当一个变量只有几种可能的值时，可以定义为枚举类型。枚举就是将变量的值逐一列出，属于该枚举型的变量只能取列举的某一个值。</p>
+<p>枚举型数据定义格式如下：</p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Public | Private Enum 变量名</span><br><span class="line">    成员1 [= 常数表达式1]</span><br><span class="line">    成员2 [= 常数表达式2]</span><br><span class="line">    ……</span><br><span class="line">End Enum</span><br><span class="line">&#x27; -----------------------------------------------------------------------------------</span><br><span class="line">&#x27; Public和Private用于定义变量的作用域(即变量的有效范围)；</span><br><span class="line">&#x27; 用中括号[]括起来的部分是可以省略的，如果省略的话，则默认以0表示第一个成员，1表示第2个成员，以此类推；</span><br></pre></td></tr></table></figure>
+<hr>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Public Enum WorkDays</span><br><span class="line">    星期日</span><br><span class="line">    星期一</span><br><span class="line">    星期二</span><br><span class="line">    星期三</span><br><span class="line">    星期四</span><br><span class="line">    星期五</span><br><span class="line">    星期六</span><br><span class="line">End Enum</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E6%9E%9A%E4%B8%BE.png" alt></p>
+<hr>
+<h2 id="二、数据类型转换">二、数据类型转换</h2>
+<h3 id="2-1-类型转换函数">2.1 类型转换函数</h3>
+<h4 id="2-1-1-CStr">2.1.1 CStr</h4>
+<p>CStr：可强制将一个表达式转换成字符串，返回代表一数值的字符串 Variant (String)；</p>
+<hr>
+<p>语法： <code>CStr(expression)</code></p>
+<blockquote>
+<p>如果 expression 为 CStr 返回：</p>
+<ul>
+<li>Boolean 字符串，包含 True 或 False；</li>
+<li>Date 字符串，包含系统的短日期格式日期；</li>
+<li>Null 运行时错误；Empty 零长度字符串 (“”)；</li>
+<li>Error 字符串，包含跟随有错误号码的单词 ;</li>
+<li>Error；其他数值字符串，包含此数字的字符串；</li>
+</ul>
+</blockquote>
+<hr>
+<p>CStr() 和 Str() 的区别：</p>
+<ul>
+<li>Str() 把数字转换成为字符号，前面会带有数值的符号，因此，会多出一个前导的空格;</li>
+</ul>
+<blockquote>
+<p>e.g. ： Len(Str(99999))，返回的结果为6，而Len(CStr(99999))返回的结果只为5。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-2-CBool">2.1.2 CBool</h4>
+<p>CBool：转换为 Boolean(布尔类型)子类型的 Variant(变量)；</p>
+<p>语法： <code>CBool(expression)</code></p>
+<blockquote>
+<p>将其他 数值类型]转换为 <strong>布尔</strong> 值时，0 将变为 <strong>False</strong>，所有其他值均变为 <strong>True</strong>。</p>
+<p>将 <strong>布尔</strong> 值转换为其他 数据类型时，<strong>False</strong> 将变为 0，<strong>True</strong> 将变为 -1。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-3-CByte">2.1.3  CByte</h4>
+<p>CByte：转换为 Byte(字节类型)子类型的 Variant；</p>
+<p>语法：<code>CByte(expression)</code></p>
+<blockquote>
+<p>CByte 函数用于进行从其他数据类型到 Byte 子类型的的国际公认的格式转换。</p>
+<p>如果 expression 在 Byte 子类型可接受的范围之外，则发生错误。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-4-CInt">2.1.4 CInt</h4>
+<p>CInt：转换为 Integer 子类型的 Variant；</p>
+<p>语法：<code>CInt(expression)</code></p>
+<blockquote>
+<p>CInt 函数用于进行从其他数据类型到 Integer 子类型的国际公认的格式转换。</p>
+<p>如果 expression 在 Integer 子类型可接受的范围之外，则发生错误。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-5-CLng">2.1.5 CLng</h4>
+<p>CLng：转换为 Long 子类型的 Variant；</p>
+<p>语法：<code>CLng(expression)</code></p>
+<blockquote>
+<p>CLng 函数用于进行从其他数据类型到 Long子类型的国际公认的格式转换。</p>
+<p>如果 expression 在 Long子类型可接受的范围之外，则发生错误。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-6-CSng">2.1.6 CSng</h4>
+<p>CSng：转换为 Single 子类型的 Variant；</p>
+<p>语法：<code>CSng(expression)</code></p>
+<blockquote>
+<p>CSng 函数用于进行从其他数据类型到 Single 子类型的国际公认的格式转换。</p>
+<p>如果 expression 在 Single 子类型允许的范围之外，则发生错误。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-7-CDbl">2.1.7 CDbl</h4>
+<p>CDbl：换为 Double 子类型的 Variant;</p>
+<p>语法：<code>CDbl(expression)</code></p>
+<blockquote>
+<p>CDbl 函数用于进行从其他数据类型到 Double 子类型的国际公认的格式转换。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-8-CCur">2.1.8 CCur</h4>
+<p>CCur：转换为 Currency 子类型的 Variant；</p>
+<p>语法：<code>CCur(expression)</code>；</p>
+<blockquote>
+<p>CCur 函数用于进行从其他数据类型到 Currency 子类型的国际公认的格式转换。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-9-CDate">2.1.9 CDate</h4>
+<p>CDate：转换为 Date 子类型的 Variant；<br>
+语法：<code>CDate(date)</code> [date 参数是任意有效的日期表达式]</p>
+<blockquote>
+<p>CDate 识别日期文字和时间文字，以及一些在可接受的日期范围内的数字。在将数字转换为日期时，数字的整数部分被转换为日期，分数部分被转换为从午夜开始计算的时间。</p>
+<p>CDate 根据系统的区域设置识别日期格式。如果数据的格式不能被日期设置识别，则不能判断年、月、日的正确顺序。另外，如果长日期格式包含表示星期几的字符串，则不能被识别。</p>
+</blockquote>
+<hr>
+<h3 id="2-2-Format函数">2.2 Format函数</h3>
+<p>Format：格式化数字和文本的，基本和excel里面的format是一样的作用；</p>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub test()</span><br><span class="line">    Dim a As Integer</span><br><span class="line">    a = 123</span><br><span class="line">    Dim b</span><br><span class="line">    b = 12304</span><br><span class="line">    Debug.Print Format(a, &quot;0000.00&quot;)</span><br><span class="line">    Debug.Print Format(a, &quot;\价格\ 0000.00&quot;)</span><br><span class="line">    Debug.Print Format(b, &quot;yyyy-mm-dd&quot;)   	&#x27; 这里计算是从1900-01-01加上b的得到的日期</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参考资源：</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.cnblogs.com/wuzhiblog/p/vba_one.html" target="_blank"><a href="https://www.cnblogs.com/wuzhiblog/p/vba_one.html">Excel VBA入门（一）数据类型</a></a></td>
+</tr>
+<tr>
+<td><a href="https://blog.csdn.net/adolphe/article/details/5804804" target="_blank">Excel VBA 类型转换函数</a></td>
+</tr>
+<tr>
+<td><a href="https://blog.csdn.net/stanwuc/article/details/105411081" target="_blank">Excel VBA（07）数据类型和转换</a></td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/zh-cn/office/vba/language/reference/user-interface-help/data-type-summary" target="_blank">Microsoft Office VBA参考</a></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>Study</category>
+        <category>VBA</category>
+      </categories>
+      <tags>
+        <tag>Excel</tag>
+        <tag>VBA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Excel VBA学习——入门</title>
+    <url>/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h1>Excel VBA学习——入门</h1>
+<h2 id="前言">前言</h2>
+<blockquote>
+<p>宏[macro]：一组可以自动执行的代码[vba]</p>
+</blockquote>
+<ul>
+<li>优点：重复执行相同的操作，可以考虑用宏；</li>
+<li>缺点：不够智能，无法交互工作，代码冗余；</li>
+</ul>
+<blockquote>
+<p>解决方案：<code>vba</code></p>
+</blockquote>
+<hr>
+<span id="more"></span>
+<h2 id="一、VBA简介">一、VBA简介</h2>
+<h3 id="1-1-VBA介绍">1.1 VBA介绍</h3>
+<blockquote>
+<p>Visual Basic for Applications(VBA)是一种Visual Basic的一种宏语言，主要用来扩展Windows的应用式功能。</p>
+<p>VBA是寄生于VB应用程序的版本，必须依赖父程序，e.g. EXCEL，CAD…</p>
+</blockquote>
+<hr>
+<h3 id="1-2-VBA与VB">1.2 VBA与VB</h3>
+<blockquote>
+<p>VBA和VB的区别：</p>
+<ul>
+<li>VB是编写应用程序，而VBA是使已有的应用程序(EXCEL,CAD)自动化；</li>
+<li>VB具有自己的开发环境，而VBA必须寄生于已有的应用程序；</li>
+<li>运行VB开发的应用程序，不必安装VB，而VBA开发的程序必须依赖于它的父引用程序；</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="1-3-VBA用途">1.3 VBA用途</h3>
+<blockquote>
+<p>VBA的用途：</p>
+<ul>
+<li>规范用户操作，控制用户的操作行为；</li>
+<li>操作界面人性化，方便用户操作；</li>
+<li>多步骤，重复步骤可以执行VBA代码可以迅速实现；</li>
+<li>实现一些无法实现的功能；</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="1-4-Excel添加VBA">1.4 Excel添加VBA</h3>
+<p>打开Excel，依次找到“文件”-&gt;“选项”-&gt;“自定义功能区”，在右侧主选项卡下面的选项中，找到“开发工具”，在前面的小框打勾，确定。返回Excel，即可在菜单栏右侧看到有开发工具：</p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220113144652629.png" alt="image-20220113144652629"></p>
+<hr>
+<h2 id="二、VBE简介">二、VBE简介</h2>
+<blockquote>
+<p>VBE就是VBA的编辑窗口，进入方式如下两种：</p>
+<ul>
+<li>快捷键：ALT+F11；</li>
+<li>菜单栏 --&gt; 开发工具 --&gt; Visual Basic；</li>
+</ul>
+</blockquote>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220113142650108.png" alt="image-20220113142650108"></p>
+<hr>
+<h3 id="2-1-第一个VBA程序">2.1 第一个VBA程序</h3>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub sub_name() </span><br><span class="line">    &#x27;</span><br><span class="line">    &#x27;中间这里是我们要实现各种操作的VBA代码</span><br><span class="line">    &#x27;</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p>其中<code>Sub</code>和末尾的<code>End Sub</code>是必须的固定形式，sub_name是过程名称，后面的括号<code>()</code>是必须的。VBA中允许使用中文作为过程名称，但建议还是尽量使用英文为好。</p>
+<hr>
+<p><code>e.g.</code></p>
+<figure class="highlight plaintext"><figcaption><span>basic</span></figcaption><table><tr><td class="code"><pre><span class="line">Sub Hello_World()</span><br><span class="line">    Debug.Print &quot;Hello, World!&quot;</span><br><span class="line">    MsgBox &quot;Hello, World!&quot;</span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<hr>
+<p>运行VBA代码有三种方式：</p>
+<ul>
+<li>菜单栏下面的工具栏中的绿色小三角: <img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220113142337051.png" alt="image-20220113142337051"></li>
+<li>在菜单栏选择“运行”-&gt;“运行子过程/用户窗体 F5”</li>
+<li>快捷键F5</li>
+</ul>
+<blockquote>
+<p><em>应该注意的是，如果运行代码前鼠标光标没有在任一个VBA过程内部，VBE会弹出一个对话框，请求选择将要用于运行的VBA过程：</em></p>
+</blockquote>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220113142316612.png" alt="image-20220113142316612"></p>
+<hr>
+<p>第一行代码<code>Debug.Print &quot;Hello, World!&quot;</code>会在位于VBE下方的“立即窗口”中输出双引号中的内容，即<code>Hello, World</code>：</p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220113143816316.png" alt="image-20220113143816316"></p>
+<p><em>（如果VBE中没有出现立即窗口，可以在菜单栏“视图”中勾选立即窗口显示）</em></p>
+<hr>
+<p>第二行代码<code>MsgBox &quot;Hello, World!&quot;</code>则会以弹窗的形式显示双引号中的<code>Hello, World!</code>：</p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220113143926324.png" alt="image-20220113143926324"></p>
+<hr>
+<p><strong>最后，包含有VBA代码的Excel文件不能再保存为.xls或.xlsx文件，应保存为.xlsm文件</strong></p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220113144129926.png" alt="image-20220113144129926"></p>
+<hr>
+<h3 id="2-2-解决无法运行VBA">2.2 解决无法运行VBA</h3>
+<p>打开Excel，依次找到&quot;文件&quot;-&gt;“选项”-&gt;信任中心-&gt;“信任中心设置”-&gt;“宏设置”，将启用所有宏打开，不可能将开发人员宏设置打开，之后关闭Excel重新打开文件即可。</p>
+<p><img src="/2022/01/18/Excel-VBA%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%85%A5%E9%97%A8/image-20220113144949042.png" alt="image-20220113144949042"></p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>参考资源：</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.cnblogs.com/wuzhiblog/p/vba_zero.html" target="_blank"><a href="https://www.cnblogs.com/wuzhiblog/p/vba_zero.html">Excel VBA 入门（零） </a></a></td>
+</tr>
+<tr>
+<td><a href="https://www.51zxw.net/list.aspx?cid=873" target="_blank">我要自学网 Excel VBA基础教程</a></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>Study</category>
+        <category>VBA</category>
+      </categories>
+      <tags>
+        <tag>Excel</tag>
+        <tag>VBA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux文件切割命令——Split</title>
     <url>/2021/12/31/Linux%E6%96%87%E4%BB%B6%E5%88%87%E5%89%B2%E5%91%BD%E4%BB%A4%E2%80%94%E2%80%94split/</url>
     <content><![CDATA[<h1>前言</h1>
